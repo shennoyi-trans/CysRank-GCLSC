@@ -108,10 +108,10 @@ python run.py --output logs/demo --track "实际参赛赛道"
 
 [打开完整流程 Notebook](notebooks/01_reproducible_workflow.ipynb)。包含中文步骤说明、数据核对、50 轮训练与参数优化、母蛋白分组诊断、随附最终模型与新训练模型的 Top 3 对照，以及原始评分一致性核验。已保存实际执行输出。
 
-在项目环境中安装可选依赖并启动：
+使用项目统一依赖文件配置环境并启动：
 
 ```bash
-python -m pip install -r requirements-notebook.txt
+python -m pip install -r requirements.txt
 python -m jupyterlab
 ```
 
