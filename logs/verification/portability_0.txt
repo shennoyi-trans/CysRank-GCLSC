@@ -1,0 +1,6 @@
+Scored 19 existing Cys sites; scores are not calibrated efficiencies.
+Exported 3 candidates to portable.csv
+D:\GCLSC\tmp\portability_check\renamed_project\src\protein_mpnn_utils.py:799: UserWarning: Using torch.cross without specifying the dim arg is deprecated.
+Please either pass the dim explicitly or simply use torch.linalg.cross.
+The default value of dim will change to agree with that of linalg.cross in a future release. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\Cross.cpp:67.)
+  n_2 = F.normalize(torch.cross(u_2, u_1), dim=-1)

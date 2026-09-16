@@ -1,0 +1,8 @@
+{
+  "source": "data/raw",
+  "parents": "data/provenance/parent_sequences.jsonl",
+  "pretrained": "models/pretrained/v_48_020.pt",
+  "epochs": 50,
+  "seed": 20260916,
+  "output": "logs/reproduction"
+}

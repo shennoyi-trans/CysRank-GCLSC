@@ -1,0 +1,94 @@
+{
+  "data/raw/训练正例.jsonl": {
+    "source": "result_from_ZQY(8)/训练正例.jsonl",
+    "sha256": "7e86251e1e91ab1b5fc56e137414b71e6200b7ede57548c611e63dd14e0f1555"
+  },
+  "data/raw/训练集负例.jsonl": {
+    "source": "result_from_ZQY(8)/训练集负例.jsonl",
+    "sha256": "8e29460b02b5049c43808405fdcd81115ca906afecf2c6643ec4f3501c051bb0"
+  },
+  "data/external/validation.jsonl": {
+    "source": "result_from_ZQY(8)/验证集 .jsonl",
+    "sha256": "6185ff2472c2d1239c05d164b7def32a7ed6bbf09abbadc55ff8e582b67a770b"
+  },
+  "data/provenance/positive_before_exclusion.jsonl": {
+    "source": "result_from_ZQY(8)/训练正例.before_exclusion_20260916.jsonl.bak",
+    "sha256": "572f5f0b61826b4f9ed0a61ad6488916efc5143f421677319c873f04c4e6ee4f"
+  },
+  "data/provenance/parent_sequences.jsonl": {
+    "source": "result_from_ZQY(3)/第二部分/正例.jsonl",
+    "sha256": "eab30596a518367cee4f59f0937e95a5040a44b3ac67d03b62411c005dca4380"
+  },
+  "data/structures/test.pdb": {
+    "source": "result_from_ZQY(8)/测试.pdb",
+    "sha256": "2b22e410e41cf8292fb6e8a1e91cea9d4d9a9d184113c74a3fda6084a3d0a811"
+  },
+  "docs/source_requirements.docx": {
+    "source": "result_from_ZQY(8)/要求.docx",
+    "sha256": "be57b77fdc0382d9534ba442ed3a60f1c3b4c8cabb3368160996649832c12bd4"
+  },
+  "docs/submission_requirements.docx": {
+    "source": "附件4-代码提交要求0721-V2.docx",
+    "sha256": "e6a4b9ca5611024e33f3b5063f679b0d33ca8cddddf49786e912b85e3edbf9b0"
+  },
+  "licenses/ProteinMPNN-MIT.txt": {
+    "source": "ProteinMPNN-main/LICENSE",
+    "sha256": "82009d25ce585631f452b2b24589bdb29c559ccfefa2f200ef312ed5b501a586"
+  },
+  "models/pretrained/v_48_020.pt": {
+    "source": "ca_reproducibility/ca_model_weights/v_48_020.pt",
+    "sha256": "f28f40170e21858c5ff31ef50b6e63414ff76dc331b19f85aa8586a12031744a"
+  },
+  "models/site_predictor.pt": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/final_model/site_predictor.pt",
+    "sha256": "0404e955818fc579f4125ce0ef7379b30a3ee33e55fd90c8155cd03e6170d222"
+  },
+  "data/processed/training.jsonl": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/prepared/training.jsonl",
+    "sha256": "ac4bde6402b153347252b261bcaf6c17008aa5f9165b4914cd2f480f8ee1f4ba"
+  },
+  "logs/original/config.json": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/config.json",
+    "sha256": "580054f30d22c5373a6e4347891909d52f9a10bf1422f0308ffaf674156e6608"
+  },
+  "logs/original/summary.json": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/summary.json",
+    "sha256": "078e755c343a167315b6c1a6f9fc3f55ed529b0cf26486789502f70b90751194"
+  },
+  "logs/original/training_log.json": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/training_log.json",
+    "sha256": "965547259261be54d548170aad3a67865837e88d7cc28f9148aab7ba3b13a3be"
+  },
+  "logs/original/training_predictions.jsonl": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/training_predictions.jsonl",
+    "sha256": "fa5afa18b554f9e9c6a9b62678f1ede5d692bb865a4a027f77c4033309d0ab64"
+  },
+  "logs/original/TRAINING_REPORT.md": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/TRAINING_REPORT.md",
+    "sha256": "4fe5a6bfc1c78924583d246f1999c0a8c80c1a8e095a9a9562e8fffe14619122"
+  },
+  "logs/original/diagnostics/biochemical_only_heldout.jsonl": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/diagnostics/biochemical_only_heldout.jsonl",
+    "sha256": "bdfa875ae5d2cfbe6fb6bee8a9d365a2f62e8adfa44587d2f29904c378cc99ca"
+  },
+  "logs/original/diagnostics/full_heldout.jsonl": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/diagnostics/full_heldout.jsonl",
+    "sha256": "fc7528c45e313f7ff6efb9238f823a0c6ea53f6a40ed4f15948d674fdb042610"
+  },
+  "logs/original/diagnostics/grouped_ablation.json": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/diagnostics/grouped_ablation.json",
+    "sha256": "13cab9a11293b65bc717d8448ee717af67177d2cc3cef59271a5580c29f9705a"
+  },
+  "logs/original/diagnostics/without_biochemical_heldout.jsonl": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/diagnostics/without_biochemical_heldout.jsonl",
+    "sha256": "b712c9ac9be726131a780e2ecb8ab4e6808b17c3b7a89b236c80cf9759aa12e1"
+  },
+  "logs/original/final_model/reload_predictions.jsonl": {
+    "source": "result_from_ZQY(8)/retrained_20260916_v1/final_model/reload_predictions.jsonl",
+    "sha256": "8b995b853e371706c39a074d82ad80a7ff19f943b9646adbbae3454fbcc0a29f"
+  },
+  "src/protein_mpnn_utils.py": {
+    "source": "ca_reproducibility/protein_mpnn_utils.py",
+    "sha256": "74c8f9b7553422a7a0bbd705874844ee103c8926c2c96f154a87e0b824071e1b"
+  }
+}
