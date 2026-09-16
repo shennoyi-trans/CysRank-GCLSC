@@ -1,7 +1,12 @@
 tmp/
 .venv/
+.obsidian/
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 logs/demo/
 logs/reproduction/
+
+---过程性文件---
+tmp/
+docs/

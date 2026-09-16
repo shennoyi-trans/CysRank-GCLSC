@@ -9,7 +9,7 @@
 | 训练、配置、日志、种子 | train.py、configs、logs/original 已提供 |
 | 最终模型和 Model Card | models 已提供 |
 | 训练/设计 → 优化 → 推理/筛选 | run.py 覆盖训练、参数优化和已有位点筛选，未实现插入设计 |
-| Notebook | 依完整主入口可复现流程的豁免，不另设 Notebook |
+| Notebook | notebooks/01_reproducible_workflow.ipynb，已从根目录及 notebooks 目录完整执行，保留运行输出 |
 | 数据来源、获取时间、许可 | 保留现有来源与哈希，原始来源、获取时间及授权待补齐 |
 | 清洗、划分、去重、防泄漏 | 已披露，全面同源和预训练重叠审计待补充 |
 | 排序与不确定性 | 固定阈值、硬过滤、分数排序；披露泛化不足 |

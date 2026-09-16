@@ -104,6 +104,21 @@ python run.py --output logs/demo --track "实际参赛赛道"
 
 为保护已有结果，输出文件或训练输出目录须为新路径。默认预测位置为 `results/results.csv`，该文件已随项目提供，复跑时请使用上例的新输出路径。`--track` 应填写实际参赛赛道；未填写时标记为演示。
 
+## Jupyter Notebook
+
+[打开完整流程 Notebook](notebooks/01_reproducible_workflow.ipynb)。包含中文步骤说明、数据核对、50 轮训练与参数优化、母蛋白分组诊断、随附最终模型与新训练模型的 Top 3 对照，以及原始评分一致性核验。已保存实际执行输出。
+
+在项目环境中安装可选依赖并启动：
+
+```bash
+python -m pip install -r requirements-notebook.txt
+python -m jupyterlab
+```
+
+选择与项目依赖相同的 Python 内核，打开 Notebook 后执行 **Restart Kernel and Run All Cells**。默认 50 轮，参数单元格可改为 1 轮冒烟检查。可从仓库根目录或 notebooks 目录启动；内核工作目录在仓库之外时，先设置 `CYSRANK_ROOT` 指向移植后的仓库。
+
+所有数据、模型和输出路径仍基于仓库根目录。每次完整执行都会写入新的 `logs/notebook/<运行编号>/`，不会替换正式权重或覆盖已有候选清单。Notebook 中的候选属于训练回代示例，不能当作独立验证。执行验证记录见 [notebook_execution.json](logs/verification/notebook_execution.json)。
+
 ## 训练与迭代
 
 ### 独立训练
