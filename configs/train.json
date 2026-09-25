@@ -1,5 +1,6 @@
 {
   "source": "data/raw",
+  "ranking": "data/ranking/sst_ordering.json",
   "parents": "data/provenance/parent_sequences.jsonl",
   "pretrained": "models/pretrained/v_48_020.pt",
   "epochs": 50,

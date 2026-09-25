@@ -1,0 +1,14 @@
+[
+  {
+    "notebook": "notebooks/01_reproducible_workflow.ipynb",
+    "code_cells": 8,
+    "errors": 0,
+    "seconds": 14.417741000001115
+  },
+  {
+    "notebook": "notebooks/02_reduced_peptide_case.ipynb",
+    "code_cells": 3,
+    "errors": 0,
+    "seconds": 33.37589470000239
+  }
+]

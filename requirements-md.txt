@@ -1,0 +1,3 @@
+# Optional reduced-peptide simulation; first install requirements.txt.
+# Analysis of delivered PDB snapshots needs only requirements.txt.
+openmm==8.6.1

@@ -1,0 +1,4 @@
+﻿rank,candidate_id,sequence,insert_after_parent_position_1based,inserted_position_1based,prediction_score,classified_positive_at_0_5,structure_file,eligible,selection_status,warning,exclusion_reasons
+1,esmfold_smoke_insert_C_after_1,ACG,1,2,0.8732734322547913,True,structures/esmfold_smoke_insert_C_after_1.pdb,False,fallback,补足候选：根据已有了解，该序列的成功可能性较低，尚未经实验验证。原因：预测结构未通过几何检查，需修复并重新评估,['structure_geometry_check_failed']
+2,esmfold_smoke_insert_C_after_0,CAG,0,1,0.515143632888794,True,structures/esmfold_smoke_insert_C_after_0.pdb,False,fallback,补足候选：根据已有了解，该序列的成功可能性较低，尚未经实验验证。原因：新增 Cys 位于游离 N 端，缺少前接主链酰胺；预测结构未通过几何检查，需修复并重新评估,"['free_N_terminal_Cys_has_no_preceding_backbone_amide', 'structure_geometry_check_failed']"
+3,esmfold_smoke_insert_C_after_2,AGC,2,3,0.31493207812309265,False,structures/esmfold_smoke_insert_C_after_2.pdb,False,fallback,补足候选：根据已有了解，该序列的成功可能性较低，尚未经实验验证。原因：预测结构未通过几何检查，需修复并重新评估,['structure_geometry_check_failed']

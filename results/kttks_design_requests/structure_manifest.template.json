@@ -1,0 +1,74 @@
+[
+  {
+    "sequence": "CKTTKS",
+    "structure_id": "kttks_literature_case_insert_C_after_0",
+    "candidate_ids": [
+      "kttks_literature_case_insert_C_after_0"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "KCTTKS",
+    "structure_id": "kttks_literature_case_insert_C_after_1",
+    "candidate_ids": [
+      "kttks_literature_case_insert_C_after_1"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "KTCTKS",
+    "structure_id": "kttks_literature_case_insert_C_after_2",
+    "candidate_ids": [
+      "kttks_literature_case_insert_C_after_2"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "KTTCKS",
+    "structure_id": "kttks_literature_case_insert_C_after_3",
+    "candidate_ids": [
+      "kttks_literature_case_insert_C_after_3"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "KTTKCS",
+    "structure_id": "kttks_literature_case_insert_C_after_4",
+    "candidate_ids": [
+      "kttks_literature_case_insert_C_after_4"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "KTTKSC",
+    "structure_id": "kttks_literature_case_insert_C_after_5",
+    "candidate_ids": [
+      "kttks_literature_case_insert_C_after_5"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  }
+]

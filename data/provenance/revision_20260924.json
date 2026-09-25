@@ -1,0 +1,37 @@
+{
+  "revision": "part2-20260924-v1",
+  "source_directory": "tmp/第二部分任务 (2)",
+  "archive_directory": "tmp/archive/before_part2_retrain_20260924",
+  "source_file_sha256": {
+    "测试.pdb": "2b22e410e41cf8292fb6e8a1e91cea9d4d9a9d184113c74a3fda6084a3d0a811",
+    "要求.docx": "be57b77fdc0382d9534ba442ed3a60f1c3b4c8cabb3368160996649832c12bd4",
+    "训练正例.jsonl.txt": "47349ce661d2185012c2d30c6a3940830e22b03194a093cb1681162acb0cb5ca",
+    "训练集负例.jsonl": "8e29460b02b5049c43808405fdcd81115ca906afecf2c6643ec4f3501c051bb0",
+    "验证集 .jsonl": "ee8c32cd17d4d8a2969b3f8590952fa85e5e35a5c477ba522a3c90127ff7d1ca"
+  },
+  "active_file_sha256": {
+    "data/raw/训练正例.jsonl": "b20d93bd0bfa8b64f7461e85c444e7c31908fba4e1ebceed7d6b7fe1d6c4bed1",
+    "data/raw/训练集负例.jsonl": "8e29460b02b5049c43808405fdcd81115ca906afecf2c6643ec4f3501c051bb0",
+    "data/provenance/positive_before_exclusion.jsonl": "47349ce661d2185012c2d30c6a3940830e22b03194a093cb1681162acb0cb5ca",
+    "data/external/validation.jsonl": "ee8c32cd17d4d8a2969b3f8590952fa85e5e35a5c477ba522a3c90127ff7d1ca",
+    "data/structures/test.pdb": "2b22e410e41cf8292fb6e8a1e91cea9d4d9a9d184113c74a3fda6084a3d0a811"
+  },
+  "excluded_positive": {
+    "sequence": "VNRRPCFSALT",
+    "source_line_1based": 8,
+    "reason": "Continue user-authorized prior exclusion for conflict with previous-Pro output filter; not relabeled negative"
+  },
+  "raw_positive_records": 9,
+  "selected_positive_records": 8,
+  "negative_records": 11,
+  "positive_sites": 8,
+  "negative_sites": 14,
+  "feature_scope": "SASA changes observed in positive records only; negative records unchanged. Isolated-fragment recomputation inferred from discussion, not independently reproduced.",
+  "limitations": [
+    "No new free-peptide conformations established",
+    "Inherited parent-context negative features and experimental labels",
+    "Training composition changed as well as SASA; no causal attribution of metric changes",
+    "AGCKNFFW and KTFTSC overlap test 2MI1; no independent evaluation on that PDB",
+    "248 external records are unverified candidates, not confirmed negatives"
+  ]
+}

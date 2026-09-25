@@ -1,0 +1,37 @@
+test_bad_contracts_and_sample_tampering_rejected (test_barrier.BarrierTests.test_bad_contracts_and_sample_tampering_rejected) ... ok
+test_duplicates_protocol_mixing_and_leakage (test_barrier.BarrierTests.test_duplicates_protocol_mixing_and_leakage) ... ok
+test_end_to_end_archive_train_reload_predict_and_wet_isolation (test_barrier.BarrierTests.test_end_to_end_archive_train_reload_predict_and_wet_isolation) ... D:\CysRank-GCLSC\src\protein_mpnn_utils.py:799: UserWarning: Using torch.cross without specifying the dim arg is deprecated.
+Please either pass the dim explicitly or simply use torch.linalg.cross.
+The default value of dim will change to agree with that of linalg.cross in a future release. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\Cross.cpp:67.)
+  n_2 = F.normalize(torch.cross(u_2, u_1), dim=-1)
+ok
+test_failed_unreviewed_and_quality_failed_excluded (test_barrier.BarrierTests.test_failed_unreviewed_and_quality_failed_excluded) ... ok
+test_scaling_and_intercept (test_barrier.BarrierTests.test_scaling_and_intercept) ... ok
+test_units_signed_values_and_invalid_numbers (test_barrier.BarrierTests.test_units_signed_values_and_invalid_numbers) ... ok
+test_exact_exclusion_and_backup (test_data.DataRevisionTests.test_exact_exclusion_and_backup) ... ok
+test_revision_hashes_and_unknown_labels (test_data.DataRevisionTests.test_revision_hashes_and_unknown_labels) ... ok
+test_supervision_and_disclosed_test_overlap (test_data.DataRevisionTests.test_supervision_and_disclosed_test_overlap) ... ok
+test_bad_input (test_design.InsertionTests.test_bad_input) ... ok
+test_duplicate_sequences_keep_site_mapping (test_design.InsertionTests.test_duplicate_sequences_keep_site_mapping) ... ok
+test_prepare_manifest_and_no_overwrite (test_design.InsertionTests.test_prepare_manifest_and_no_overwrite) ... ok
+test_ranking_deduplicates_sequences_and_retains_low_scores (test_design.InsertionTests.test_ranking_deduplicates_sequences_and_retains_low_scores) ... ok
+test_true_insertion_and_mapping (test_design.InsertionTests.test_true_insertion_and_mapping) ... ok
+test_full_design_and_barrier_request (test_design.StructureDesignTests.test_full_design_and_barrier_request) ... ok
+test_overlap_and_disulfide_evidence (test_design.StructureDesignTests.test_overlap_and_disulfide_evidence) ... ok
+test_real_test_pdb_existing_cys_is_not_insertion (test_design.StructureDesignTests.test_real_test_pdb_existing_cys_is_not_insertion) ... ok
+test_structure_features_and_bad_sequence (test_design.StructureDesignTests.test_structure_features_and_bad_sequence) ... ok
+test_feedback_ingest_retrain_predict_end_to_end (test_feedback.FeedbackTests.test_feedback_ingest_retrain_predict_end_to_end) ... ok
+test_holdout_parent_and_sequence_leakage_rejected (test_feedback.FeedbackTests.test_holdout_parent_and_sequence_leakage_rejected) ... ok
+test_invalid_feedback_and_duplicates_rejected (test_feedback.FeedbackTests.test_invalid_feedback_and_duplicates_rejected) ... ok
+test_main_only_masks (test_feedback.FeedbackTests.test_main_only_masks) ... ok
+test_reviewed_wet_accepted_with_explicit_outcome (test_feedback.FeedbackTests.test_reviewed_wet_accepted_with_explicit_outcome) ... ok
+test_rules_no_sasa_or_nearby_exclusion (test_feedback.FeedbackTests.test_rules_no_sasa_or_nearby_exclusion) ... ok
+test_simulation_and_unreviewed_not_supervised (test_feedback.FeedbackTests.test_simulation_and_unreviewed_not_supervised) ... ok
+test_single_class_metrics_not_presented_as_accuracy (test_feedback.FeedbackTests.test_single_class_metrics_not_presented_as_accuracy) ... ok
+test_labels_do_not_enter_features_and_translation_invariance (test_model_inputs.ModelInputTests.test_labels_do_not_enter_features_and_translation_invariance) ... ok
+test_nonfinite_and_nested_features_rejected (test_model_inputs.ModelInputTests.test_nonfinite_and_nested_features_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 9.546s
+
+OK

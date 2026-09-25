@@ -1,0 +1,36 @@
+Scored 240 existing Cys sites; scores are not calibrated efficiencies.
+{
+  "frames": 100,
+  "cys3_higher": 7,
+  "geometry_failures": 0,
+  "filter_failures": 0,
+  "cys3_score": {
+    "mean": 0.8918273895978928,
+    "min": 0.6391674876213074,
+    "max": 0.9923721551895142
+  },
+  "cys14_score": {
+    "mean": 0.9852838832139968,
+    "min": 0.9314132928848267,
+    "max": 0.9973676800727844
+  },
+  "difference": {
+    "mean": -0.09345649361610413,
+    "min": -0.3486998677253723,
+    "max": 0.05005151033401489
+  },
+  "sg_distance_A": {
+    "mean": 5.697375862598419,
+    "min": 3.454458236694336,
+    "max": 11.14078426361084
+  },
+  "ca_rmsd_from_prepared_A": {
+    "mean": 1.7641365269188418,
+    "min": 0.8130112620975891,
+    "max": 3.380635003207839
+  }
+}
+D:\CysRank-GCLSC\tmp\agents\organized_submission_check\CysRank-GCLSC\src\protein_mpnn_utils.py:799: UserWarning: Using torch.cross without specifying the dim arg is deprecated.
+Please either pass the dim explicitly or simply use torch.linalg.cross.
+The default value of dim will change to agree with that of linalg.cross in a future release. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\Cross.cpp:67.)
+  n_2 = F.normalize(torch.cross(u_2, u_1), dim=-1)

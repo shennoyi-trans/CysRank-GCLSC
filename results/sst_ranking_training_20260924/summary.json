@@ -1,0 +1,106 @@
+{
+  "version": "sst-ranking-20260924-v1",
+  "old_model_sha256": "cbd6d0cba08d88f651c50408195bd6dacb4a41224dc2a1e87ef859185fcc77ec",
+  "new_model_sha256": "58f1c0ec37d005d971078b6d6d148f6b7fe693f7d5c4951db9d67c699629b1d4",
+  "training": {
+    "n": 22,
+    "positive_sites": 8,
+    "negative_sites": 14,
+    "tp": 8,
+    "fp": 0,
+    "tn": 14,
+    "fn": 0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": 1.0,
+    "f1": 1.0,
+    "average_precision": 1.0,
+    "threshold": 0.5,
+    "note": "Average precision is threshold-grouped AP, not trapezoidal PR-AUC."
+  },
+  "ranking": {
+    "conformers": 100,
+    "preferred_higher": 99,
+    "preferred_mean": 0.9836229681968689,
+    "other_mean": 0.7697407603263855,
+    "scope": "ONE experimental ordering; conformers are correlated augmentation, not independent tests"
+  },
+  "per_start": {
+    "1": {
+      "cys3_mean": 0.979172146320343,
+      "cys14_mean": 0.7449154794216156,
+      "cys3_higher": 10
+    },
+    "2": {
+      "cys3_mean": 0.9823679208755494,
+      "cys14_mean": 0.7205904424190521,
+      "cys3_higher": 10
+    },
+    "3": {
+      "cys3_mean": 0.9821693003177643,
+      "cys14_mean": 0.6918513059616089,
+      "cys3_higher": 10
+    },
+    "4": {
+      "cys3_mean": 0.9850177466869354,
+      "cys14_mean": 0.854301905632019,
+      "cys3_higher": 10
+    },
+    "5": {
+      "cys3_mean": 0.9810331702232361,
+      "cys14_mean": 0.7990693211555481,
+      "cys3_higher": 10
+    },
+    "6": {
+      "cys3_mean": 0.981025892496109,
+      "cys14_mean": 0.9197506010532379,
+      "cys3_higher": 9
+    },
+    "7": {
+      "cys3_mean": 0.9916067957878113,
+      "cys14_mean": 0.6801603883504868,
+      "cys3_higher": 10
+    },
+    "8": {
+      "cys3_mean": 0.9719624578952789,
+      "cys14_mean": 0.8569985151290893,
+      "cys3_higher": 10
+    },
+    "9": {
+      "cys3_mean": 0.9873490154743194,
+      "cys14_mean": 0.686131626367569,
+      "cys3_higher": 10
+    },
+    "10": {
+      "cys3_mean": 0.9945253193378448,
+      "cys14_mean": 0.7436362564563751,
+      "cys3_higher": 10
+    }
+  },
+  "heldout_whole_sst_group": {
+    "conformers": 100,
+    "preferred_higher": 26,
+    "preferred_mean": 0.4167950451374054,
+    "other_mean": 0.5237771272659302,
+    "scope": "ONE experimental ordering; conformers are correlated augmentation, not independent tests"
+  },
+  "classification_diagnostic": {
+    "n": 5,
+    "positive_sites": 5,
+    "negative_sites": 0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 0,
+    "fn": 2,
+    "accuracy": null,
+    "precision": null,
+    "recall": 0.6,
+    "specificity": null,
+    "f1": null,
+    "average_precision": null,
+    "threshold": 0.5,
+    "note": "Single-class sets cannot estimate both sensitivity and specificity; AP omitted."
+  },
+  "scope": "SST now training data; no independent effectiveness claim"
+}

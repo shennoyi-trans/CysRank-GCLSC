@@ -1,0 +1,4 @@
+﻿rank,candidate_id,sequence,insert_after_parent_position_1based,inserted_position_1based,prediction_score,classified_positive_at_0_5,structure_file,eligible,selection_status,warning,exclusion_reasons
+1,peptide_insert_C_after_3,KTTCKS,3,4,0.9625183343887329,True,structures/peptide_insert_C_after_3.pdb,True,recommended,,[]
+2,peptide_insert_C_after_4,KTTKCS,4,5,0.9455119967460632,True,structures/peptide_insert_C_after_4.pdb,True,recommended,,[]
+3,peptide_insert_C_after_1,KCTTKS,1,2,0.94207364320755,True,structures/peptide_insert_C_after_1.pdb,True,recommended,,[]

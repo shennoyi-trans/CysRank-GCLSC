@@ -1,0 +1,571 @@
+{
+  "lambda": 0.5,
+  "reference_pka": 8.0,
+  "pH": 7.5,
+  "propka_version": "3.5.1",
+  "formula": "sigmoid(logit(original_score) - 0.5*(pKa-8.0))",
+  "model_sha256": "cbd6d0cba08d88f651c50408195bd6dacb4a41224dc2a1e87ef859185fcc77ec",
+  "script_sha256": "ed7043ae32588767ba666b462402a981230190cbda3617e3f7d87e3aee1e733e",
+  "source_scores_sha256": "cb482373b759057131e0a8d4f3efd6c66b4d9d0ae6c0ffabb84808e8b8d4565c",
+  "production": {
+    "frames": 100,
+    "original_cys3_higher": 7,
+    "corrected_cys3_higher": 6,
+    "pka_cys3_lower": 54,
+    "cys3": {
+      "original_score": {
+        "mean": 0.8918273895978928,
+        "min": 0.6391674876213074,
+        "max": 0.9923721551895142
+      },
+      "corrected_score": {
+        "mean": 0.8368215419188005,
+        "min": 0.4851102609167425,
+        "max": 0.9860566216081152
+      },
+      "pka": {
+        "mean": 9.014099880517644,
+        "min": 8.230202992914297,
+        "max": 9.902696561455487
+      },
+      "thiolate_fraction_ph75": {
+        "mean": 0.04199712551571997,
+        "min": 0.003940837917465158,
+        "max": 0.15691619056884612
+      }
+    },
+    "cys14": {
+      "original_score": {
+        "mean": 0.9852838832139968,
+        "min": 0.9314132928848267,
+        "max": 0.9973676800727844
+      },
+      "corrected_score": {
+        "mean": 0.9746655068124581,
+        "min": 0.896388766728141,
+        "max": 0.995863712539649
+      },
+      "pka": {
+        "mean": 9.123030919985865,
+        "min": 8.208361580148813,
+        "max": 9.838296222258556
+      },
+      "thiolate_fraction_ph75": {
+        "mean": 0.030979213049401023,
+        "min": 0.004567887764740469,
+        "max": 0.16368481825200978
+      }
+    }
+  },
+  "per_start": {
+    "1": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 6,
+      "cys3": {
+        "original_score": {
+          "mean": 0.8513365805149078,
+          "min": 0.7468613982200623,
+          "max": 0.9493829011917114
+        },
+        "corrected_score": {
+          "mean": 0.7840211860323971,
+          "min": 0.6446979276683772,
+          "max": 0.9323011956198707
+        },
+        "pka": {
+          "mean": 8.938413948463273,
+          "min": 8.57723739463071,
+          "max": 9.279343751298411
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.04095598859639477,
+          "min": 0.016349225610209628,
+          "max": 0.0772414935574051
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.983062207698822,
+          "min": 0.9731521010398865,
+          "max": 0.994933545589447
+        },
+        "corrected_score": {
+          "mean": 0.9663897091956717,
+          "min": 0.936643862530691,
+          "max": 0.9918420084232148
+        },
+        "pka": {
+          "mean": 9.312652070238908,
+          "min": 8.819722353750436,
+          "max": 9.793642963002094
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.019981718060637154,
+          "min": 0.005060039546717686,
+          "max": 0.04570465666544662
+        }
+      }
+    },
+    "2": {
+      "frames": 10,
+      "original_cys3_higher": 1,
+      "corrected_cys3_higher": 1,
+      "pka_cys3_lower": 4,
+      "cys3": {
+        "original_score": {
+          "mean": 0.9051324009895325,
+          "min": 0.806942343711853,
+          "max": 0.9623933434486389
+        },
+        "corrected_score": {
+          "mean": 0.8422785394246516,
+          "min": 0.6959680210467059,
+          "max": 0.9343213078878468
+        },
+        "pka": {
+          "mean": 9.192144598951165,
+          "min": 8.81784380994001,
+          "max": 9.56463306981633
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.021478602571030344,
+          "min": 0.008543593049969312,
+          "max": 0.04589368802022613
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9783635556697845,
+          "min": 0.9553552865982056,
+          "max": 0.993750274181366
+        },
+        "corrected_score": {
+          "mean": 0.9658708898105157,
+          "min": 0.9205340321416347,
+          "max": 0.9897629397589258
+        },
+        "pka": {
+          "mean": 8.939242498534918,
+          "min": 8.347295519834882,
+          "max": 9.437001343360896
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.046107968324960336,
+          "min": 0.011428955515915233,
+          "max": 0.12444762444434773
+        }
+      }
+    },
+    "3": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 7,
+      "cys3": {
+        "original_score": {
+          "mean": 0.8363015234470368,
+          "min": 0.7806763052940369,
+          "max": 0.942221462726593
+        },
+        "corrected_score": {
+          "mean": 0.7483273145514329,
+          "min": 0.6255414283900302,
+          "max": 0.914616493024817
+        },
+        "pka": {
+          "mean": 9.077697483097687,
+          "min": 8.618225219394137,
+          "max": 9.815251786757022
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.03479070178260868,
+          "min": 0.004815615085704054,
+          "max": 0.07077739086541518
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9883765280246735,
+          "min": 0.975641667842865,
+          "max": 0.9960179924964905
+        },
+        "corrected_score": {
+          "mean": 0.9773818889518398,
+          "min": 0.9453808996169537,
+          "max": 0.9922635506878906
+        },
+        "pka": {
+          "mean": 9.29418099030123,
+          "min": 8.721942223374128,
+          "max": 9.684873533198678
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.021549771965891265,
+          "min": 0.006490801965790065,
+          "max": 0.05659228137723829
+        }
+      }
+    },
+    "4": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 9,
+      "cys3": {
+        "original_score": {
+          "mean": 0.947878235578537,
+          "min": 0.8815774321556091,
+          "max": 0.977970540523529
+        },
+        "corrected_score": {
+          "mean": 0.9302742649496026,
+          "min": 0.8579599985556261,
+          "max": 0.9721682450706592
+        },
+        "pka": {
+          "mean": 8.639941193632577,
+          "min": 8.417463121199285,
+          "max": 9.173400540801927
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.07812560767192409,
+          "min": 0.02077223270256013,
+          "max": 0.10788425860141158
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.996241670846939,
+          "min": 0.9948739409446716,
+          "max": 0.9973426461219788
+        },
+        "corrected_score": {
+          "mean": 0.9935245750863865,
+          "min": 0.9905564869829001,
+          "max": 0.995863712539649
+        },
+        "pka": {
+          "mean": 9.077743659688073,
+          "min": 8.569881166909965,
+          "max": 9.250654141825242
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.02943385571951346,
+          "min": 0.017446253322616657,
+          "max": 0.07845745614139799
+        }
+      }
+    },
+    "5": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 2,
+      "cys3": {
+        "original_score": {
+          "mean": 0.8880827188491821,
+          "min": 0.803536057472229,
+          "max": 0.9411028623580933
+        },
+        "corrected_score": {
+          "mean": 0.7993192342066562,
+          "min": 0.6664780784430306,
+          "max": 0.9267299663821421
+        },
+        "pka": {
+          "mean": 9.380517682999578,
+          "min": 8.46749887012381,
+          "max": 9.836879288760754
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.020880549513757916,
+          "min": 0.004582746929700826,
+          "max": 0.09728619421105685
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9798671722412109,
+          "min": 0.9516997337341309,
+          "max": 0.9960162043571472
+        },
+        "corrected_score": {
+          "mean": 0.9649337402071113,
+          "min": 0.9208542662714511,
+          "max": 0.9943158477885362
+        },
+        "pka": {
+          "mean": 9.095178554247997,
+          "min": 8.685662431625783,
+          "max": 9.838296222258556
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.03176216921497369,
+          "min": 0.004567887764740469,
+          "max": 0.061221068188595795
+        }
+      }
+    },
+    "6": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 6,
+      "cys3": {
+        "original_score": {
+          "mean": 0.9195508003234864,
+          "min": 0.8105416893959045,
+          "max": 0.9806344509124756
+        },
+        "corrected_score": {
+          "mean": 0.8723930424582231,
+          "min": 0.6967050655004492,
+          "max": 0.9646129527625771
+        },
+        "pka": {
+          "mean": 9.095532765011647,
+          "min": 8.67727687055856,
+          "max": 9.280409338731062
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.028208432287231053,
+          "min": 0.01630981368777523,
+          "max": 0.06234023166042176
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9953725636005402,
+          "min": 0.9932524561882019,
+          "max": 0.9972353577613831
+        },
+        "corrected_score": {
+          "mean": 0.9912669630736742,
+          "min": 0.9877456786494946,
+          "max": 0.9945970477696653
+        },
+        "pka": {
+          "mean": 9.289648524827907,
+          "min": 9.099168696068665,
+          "max": 9.52344602082853
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.01667434804949386,
+          "min": 0.009385526669461393,
+          "max": 0.024549163007782742
+        }
+      }
+    },
+    "7": {
+      "frames": 10,
+      "original_cys3_higher": 2,
+      "corrected_cys3_higher": 2,
+      "pka_cys3_lower": 2,
+      "cys3": {
+        "original_score": {
+          "mean": 0.9563833475112915,
+          "min": 0.9160964488983154,
+          "max": 0.9923721551895142
+        },
+        "corrected_score": {
+          "mean": 0.92373247221271,
+          "min": 0.8415033607624206,
+          "max": 0.9860566216081152
+        },
+        "pka": {
+          "mean": 9.19256611846128,
+          "min": 8.811112932706308,
+          "max": 9.487247423204003
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.021456693296097153,
+          "min": 0.010193024937083045,
+          "max": 0.046577120590170454
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9743527352809906,
+          "min": 0.9314132928848267,
+          "max": 0.9916184544563293
+        },
+        "corrected_score": {
+          "mean": 0.9589283385007787,
+          "min": 0.896388766728141,
+          "max": 0.9849278934305554
+        },
+        "pka": {
+          "mean": 9.07080493504611,
+          "min": 8.47845889602632,
+          "max": 9.817406290639271
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.03263577821438554,
+          "min": 0.004791898518295204,
+          "max": 0.0950923071060092
+        }
+      }
+    },
+    "8": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 10,
+      "cys3": {
+        "original_score": {
+          "mean": 0.8105174899101257,
+          "min": 0.6529154181480408,
+          "max": 0.9505339860916138
+        },
+        "corrected_score": {
+          "mean": 0.7739763704043143,
+          "min": 0.5910653053561217,
+          "max": 0.9360360499764805
+        },
+        "pka": {
+          "mean": 8.464479668271775,
+          "min": 8.230202992914297,
+          "max": 8.825806551096072
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.10178437033628238,
+          "min": 0.04509750119202781,
+          "max": 0.15691619056884612
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9946325480937958,
+          "min": 0.9919716119766235,
+          "max": 0.9973676800727844
+        },
+        "corrected_score": {
+          "mean": 0.9901700271981033,
+          "min": 0.9845273890017842,
+          "max": 0.9954399692998769
+        },
+        "pka": {
+          "mean": 9.197045739884228,
+          "min": 9.10279693159896,
+          "max": 9.371147544454884
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.02000037840997812,
+          "min": 0.013275423997525196,
+          "max": 0.02434989889521549
+        }
+      }
+    },
+    "9": {
+      "frames": 10,
+      "original_cys3_higher": 0,
+      "corrected_cys3_higher": 0,
+      "pka_cys3_lower": 2,
+      "cys3": {
+        "original_score": {
+          "mean": 0.8335606813430786,
+          "min": 0.6391674876213074,
+          "max": 0.9325907230377197
+        },
+        "corrected_score": {
+          "mean": 0.7451521481890749,
+          "min": 0.4851102609167425,
+          "max": 0.8814394671166784
+        },
+        "pka": {
+          "mean": 9.157199991275487,
+          "min": 8.59920427112461,
+          "max": 9.27979931458002
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.02465554553100431,
+          "min": 0.01633236465366819,
+          "max": 0.07371256154990717
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9839780926704407,
+          "min": 0.9625998139381409,
+          "max": 0.9931507110595703
+        },
+        "corrected_score": {
+          "mean": 0.9763728448825052,
+          "min": 0.9406547330051079,
+          "max": 0.9889457378317474
+        },
+        "pka": {
+          "mean": 8.730868996568237,
+          "min": 8.208361580148813,
+          "max": 9.055454027296259
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.06597866111034127,
+          "min": 0.027078449666113696,
+          "max": 0.16368481825200978
+        }
+      }
+    },
+    "10": {
+      "frames": 10,
+      "original_cys3_higher": 4,
+      "corrected_cys3_higher": 3,
+      "pka_cys3_lower": 6,
+      "cys3": {
+        "original_score": {
+          "mean": 0.9695301175117492,
+          "min": 0.9527992010116577,
+          "max": 0.9848850965499878
+        },
+        "corrected_score": {
+          "mean": 0.948740846758943,
+          "min": 0.9157375668685274,
+          "max": 0.9795812191987482
+        },
+        "pka": {
+          "mean": 9.00250535501197,
+          "min": 8.255370463946706,
+          "max": 9.902696561455487
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.047634763570869036,
+          "min": 0.003940837917465158,
+          "max": 0.14940126319497582
+        }
+      },
+      "cys14": {
+        "original_score": {
+          "mean": 0.9785917580127717,
+          "min": 0.9607955813407898,
+          "max": 0.9902220964431763
+        },
+        "corrected_score": {
+          "mean": 0.9618160912179945,
+          "min": 0.9399447671013815,
+          "max": 0.981804671751826
+        },
+        "pka": {
+          "mean": 9.222943230521038,
+          "min": 8.586905284369156,
+          "max": 9.726159113577301
+        },
+        "thiolate_fraction_ph75": {
+          "mean": 0.025667481423835545,
+          "min": 0.005905660639701108,
+          "max": 0.07566968278665655
+        }
+      }
+    }
+  },
+  "typing": "ACE ATOM; primary NHE explicitly N.am (neutral NAM); hydrogens regenerated by PROPKA; all caps and Cys audited",
+  "typing_warning": "Built-in NAM expects one H plus N (secondary amide); primary NH2 has two H plus N and emits a count warning per frame. All three interaction atoms are retained; neutral charge, two H and carbonyl connection asserted. See propka.log. Primary-amide transfer remains an approximation.",
+  "limitations": [
+    "Heuristic uncalibrated correction; no lambda tuning",
+    "Correlated snapshots and short neutral-thiol MD; not protonation equilibrium sampling",
+    "Related training fragments: not independent validation",
+    "Primary-amide typing adapter uses internal PROPKA 3.5.1 API; not unmodified CLI output",
+    "pH affects reported thiolate fraction; the specified score correction has no explicit pH term"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "openmm": "8.6.1",
+  "pdbfixer": "installed 1.12.0; not used for capped preparation",
+  "pdb_sha256": "2b22e410e41cf8292fb6e8a1e91cea9d4d9a9d184113c74a3fda6084a3d0a811",
+  "script_sha256": "92ac692360b76b5ab836e680868acca560056247ad4c2d8516d371d80962edf4",
+  "checkpoint_sha256": "cbd6d0cba08d88f651c50408195bd6dacb4a41224dc2a1e87ef859185fcc77ec",
+  "forcefield": [
+    "amber14-all.xml",
+    "amber14/tip3p.xml"
+  ],
+  "platform": "OpenCL",
+  "platform_properties": {
+    "Precision": "mixed",
+    "DeviceIndex": "0",
+    "OpenCLPlatformIndex": "0"
+  },
+  "temperature_K": 300.0,
+  "preparation_pH": 7.5,
+  "conditions_basis": "User confirmed N-acetyl, C-amide, unprotected Cys, TFA salt, pH 7.5 and 300 K. 0.15 M NaCl is an assumed solvent model; TFA/buffer concentrations unknown and TFA is not explicitly simulated.",
+  "protonation_limit": "pH used for initial hydrogen assignment only; fixed protonation MD, not constant-pH MD. Both Cys explicitly modeled as neutral thiols; no site-specific pKa or thiolate population estimation.",
+  "redox": "Remove SG-SG bond; neutral protonated CYS sidechains; classical fixed topology cannot reform disulfide",
+  "input_inconsistency": "Original PDB has SG-SG connectivity and HG on both Cys. Discard all original hydrogens and explicitly rebuild reduced topology.",
+  "original_disulfide_pairs": [
+    [
+      "3",
+      "14"
+    ]
+  ],
+  "termini": "ACE (N-acetyl) and NHE (C-primary amide, NOT N-methylamide); cap heavy atoms geometrically initialized then minimized",
+  "solvent": "TIP3P explicit water; 1 nm padding; NaCl 0.15 M plus neutralizing counterions",
+  "ensemble": "NVT; no pressure coupling; fixed prepared solvent box",
+  "nonbonded": "PME, 1 nm cutoff, default PME error tolerance",
+  "constraints": "HBonds; default rigid water",
+  "timestep_fs": 2,
+  "friction_per_ps": 1,
+  "minimization_max_iterations": 2000,
+  "minimization_tolerance_kJ_mol_nm": 10,
+  "equilibration_ps": 20,
+  "production_ps_per_start": 100,
+  "snapshot_interval_ps": 10,
+  "starts": 10,
+  "seed_base": 20260924,
+  "sampling_limit": "Short exploratory relaxation; not converged reduced-state equilibrium ensemble; no enhanced sampling",
+  "selection": "All 10 starts, all 10 fixed-time production snapshots per start; no score-based selection",
+  "elapsed_seconds": 347.47505249999995,
+  "production_snapshots": 100
+}

@@ -1,0 +1,22 @@
+{"record_id": "positive_001", "seq": "ECG", "position_1based": 2, "raw_score": 0.9922240972518921, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_002", "seq": "ALYLVCGERG", "position_1based": 6, "raw_score": 0.9792272448539734, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_003", "seq": "AGCKNFFW", "position_1based": 3, "raw_score": 0.9732788801193237, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_004", "seq": "KTFTSC", "position_1based": 6, "raw_score": 0.9806832671165466, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_005", "seq": "VHKECCHGDLL", "position_1based": 6, "raw_score": 0.669079065322876, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_006", "seq": "KLKECCDKPLL", "position_1based": 6, "raw_score": 0.9655583500862122, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_007", "seq": "KVTKCCTESLV", "position_1based": 6, "raw_score": 0.9590549468994141, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "positive_008", "seq": "SKYPNCAYKTT", "position_1based": 6, "raw_score": 0.9898151159286499, "passes_hard_filter": true, "predicted_positive": true, "rejection_reasons": []}
+{"record_id": "negative_001", "seq": "VHKECCHGDLLECADDRADLAK", "position_1based": 5, "raw_score": 0.013302590698003769, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_001", "seq": "VHKECCHGDLLECADDRADLAK", "position_1based": 6, "raw_score": 0.31918928027153015, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_001", "seq": "VHKECCHGDLLECADDRADLAK", "position_1based": 13, "raw_score": 0.004579758271574974, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_002", "seq": "VGTRCCTKPESER", "position_1based": 5, "raw_score": 0.020682990550994873, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_002", "seq": "VGTRCCTKPESER", "position_1based": 6, "raw_score": 0.035987336188554764, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_003", "seq": "SHCIAEVEK", "position_1based": 3, "raw_score": 0.003198846010491252, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_004", "seq": "RPCFSALTPDETYVPK", "position_1based": 3, "raw_score": 0.005069255828857422, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide", "previous_residue_proline"]}
+{"record_id": "negative_005", "seq": "NECFLSHKDDSPDLPK", "position_1based": 3, "raw_score": 0.0050480905920267105, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_006", "seq": "LRCASIQKFGER", "position_1based": 3, "raw_score": 0.0017467886209487915, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_007", "seq": "LCVLHEKTPVSEKVTK", "position_1based": 2, "raw_score": 0.003363999305292964, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_008", "seq": "HLVDEPQNLIKQNCDQFEK", "position_1based": 14, "raw_score": 0.02982254885137081, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_009", "seq": "GACLLPK", "position_1based": 3, "raw_score": 0.02357928268611431, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}
+{"record_id": "negative_010", "seq": "DLGEEHFKGLVLIAFSQYLQQCPFDEHVK", "position_1based": 22, "raw_score": 0.016029907390475273, "passes_hard_filter": true, "predicted_positive": false, "rejection_reasons": []}
+{"record_id": "negative_011", "seq": "CASIQKFGER", "position_1based": 1, "raw_score": 0.009171567857265472, "passes_hard_filter": false, "predicted_positive": false, "rejection_reasons": ["disulfide"]}

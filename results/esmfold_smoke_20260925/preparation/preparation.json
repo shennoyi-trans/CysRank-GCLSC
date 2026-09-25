@@ -1,0 +1,8 @@
+{
+  "parent_id": "esmfold_smoke",
+  "parent_sequence": "AG",
+  "operation": "insert_one_C",
+  "candidate_count": 3,
+  "unique_sequence_count": 3,
+  "status": "awaiting_candidate_structures; no model scores or Top3 assigned"
+}

@@ -1,0 +1,11 @@
+{
+  "lambda_fixed": 0.5,
+  "frames": 120,
+  "production_frames": 100,
+  "site_rows": 240,
+  "typing_assertions_passed": true,
+  "expected_primary_amide_warnings": 120,
+  "repeat_csv_byte_identical": true,
+  "tests_exit_code": 0,
+  "model_unchanged": true
+}

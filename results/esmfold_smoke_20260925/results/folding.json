@@ -1,0 +1,8 @@
+{
+  "model": "facebook/esmfold_v1",
+  "revision": "75a3841ee059df2bf4d56688166c8fb459ddd97a",
+  "device": "cpu",
+  "chunk_size": 32,
+  "stem_dtype": "torch.float16",
+  "method": "ESMFold v1 / Hugging Face Transformers"
+}

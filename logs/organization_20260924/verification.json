@@ -1,0 +1,14 @@
+{
+  "model_and_input_unchanged": true,
+  "snapshot_hashes_verified": 120,
+  "scores_identical_before_after_organization": true,
+  "notebook_code_cells": 3,
+  "notebook_errors": 0,
+  "notebook_elapsed_seconds": 73.80961550000029,
+  "tests_exit_code": 0,
+  "preparation_and_feature_functions_unchanged": true,
+  "md_cli_help_passed": true,
+  "package_hashes_verified": 293,
+  "relocated_analysis_identical": true,
+  "relocated_structure_links_verified": 200
+}

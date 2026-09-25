@@ -1,4 +1,4 @@
-"""ZQY8 site predictor and provenance-aware feedback replay (not insertion design)."""
+"""Site predictor and provenance-aware feedback replay (not insertion design)."""
 import argparse
 import copy
 import json
@@ -84,6 +84,9 @@ def validate_event(event):
     efficiency = event.get("cyclization_efficiency_fraction")
     if efficiency is not None and (type(efficiency) not in (int, float) or not np.isfinite(efficiency) or not 0 <= efficiency <= 1):
         raise ValueError("Efficiency must be a fraction in [0,1], not percent")
+    if "barrier" in event:
+        from .barrier import validate_barrier
+        validate_barrier(event)
 
 
 def ingest(args):
@@ -98,8 +101,10 @@ def ingest(args):
         raise FileExistsError(args.output)
     # Archive every observation; only reviewed wet TRAIN records can reach the loss.
     core.write_jsonl(args.output, events)
+    from .barrier import eligible
     print(json.dumps({"archived": len(events), "eligible_for_training": sum(
-        e["evidence_type"] == "wet_experiment" and e["reviewed"] and e["split"] == "train" for e in events)}))
+        e["evidence_type"] == "wet_experiment" and e["reviewed"] and e["split"] == "train" for e in events),
+        "eligible_for_barrier_training": sum(eligible(e) and e["split"] == "train" for e in events)}))
 
 
 def merge_feedback(rows, path):
@@ -161,12 +166,16 @@ def train(args):
     if args.epochs < 1 or args.output.exists():
         raise ValueError("Positive epochs and a new output directory required")
     rows, feedback_stats = merge_feedback(prepare(args.source, args.parents), args.feedback)
+    from . import ranking
+    ranking_path = getattr(args, 'ranking', None)
+    ranking_path = (ROOT / ranking_path) if ranking_path else None
+    ordering = ranking.load(ranking_path, rows) if ranking_path else None
     torch.set_num_threads(4)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     test_sequence = "AGCKNFFWKTFTSC"
     test_overlap = [r["record_id"] for r in rows
                     if r["seq"] in test_sequence or test_sequence in r["seq"]]
-    config = {"version": "zqy8-v1",
+    config = {"version": "sst-ranking-20260924-v1" if ordering else "part2-20260924-v1",
               "source_directory": relative_record(args.source),
               "test_2mi1_sequence_overlap_records": test_overlap,
               "seed": args.seed, "epochs": args.epochs,
@@ -186,13 +195,29 @@ def train(args):
               "label_semantics": "base source ca_label is tested mask; file provenance determines outcome",
               "limitations": ["Not an insertion generator", "Main positive file authoritative; full-atom feature provenance not independently audited",
                               "Negative parents concentrated; homology not audited", "2MI1 is not evaluated: reaction-state structure unresolved; known ordering must not guide tuning",
-                              "Pro exclusion is user-adopted hypothesis", "nearby_atoms is learned input, not an invented target-range penalty"]}
+                              "Pro exclusion is user-adopted hypothesis", "nearby_atoms is learned input, not an invented target-range penalty",
+                              "Positive SASA updates only; isolated-peptide recalculation method not independently reproduced",
+                              "Historical fragment coordinates and negative features retained; no free-peptide conformational rebuilding",
+                              "Data composition also changed; metrics cannot isolate a causal benefit from SASA updates"]}
     args.output.mkdir(parents=True)
+    if ordering:
+        config['ranking'] = {'path':relative_record(ranking_path), 'sha256':core.sha(ranking_path),
+                             'observations':1, 'conformers':len(ordering['samples']),
+                             'parent_group':ordering['parent_group'], 'weight':1.0,
+                             'loss':'(sum weighted BCE + mean softplus(-(z3-z14)))/(sum binary weights + 1)',
+                             'label_scope':'Experimental ordering only; no Cys14 negative label; MD is input augmentation',
+                             'evaluation':'SST is training resubstitution; whole related parent withheld together in diagnostics'}
+        config['iteration'] = 'Full replay from frozen encoder; experimental binary plus experimental ordering; no simulation outcome labels'
+        config['limitations'] = [v for v in config['limitations'] if not v.startswith('2MI1 is not evaluated')]
+        config['limitations'].append('SST and related fragments are training data; cannot establish independent generalization')
+        config['code_sha256']['ranking.py'] = core.sha(Path(ranking.__file__))
+        core.write_json(args.output/'prepared/ordering.json', ordering)
     core.write_json(args.output / "config.json", config)
     core.write_jsonl(args.output / "prepared/training.jsonl", rows)
     if args.feedback:
         core.write_jsonl(args.output / "prepared/feedback_archive.jsonl", core.load_jsonl(args.feedback))
     backbone = core.make_backbone(args.pretrained, device)
+    pairs = ranking.encode(ordering, backbone, device) if ordering else None
     vectors, targets, weights, sites = [], [], [], []
     for r in rows:
         f = core.features(backbone, r, device)
@@ -207,7 +232,7 @@ def train(args):
     if len(set(targets)) != 2:
         raise ValueError("Two experimental outcome classes required")
     columns = list(range(x.shape[1]))
-    head, logs = core.fit(x, y, w, args.epochs, columns, args.seed)
+    head, logs = core.fit(x, y, w, args.epochs, columns, args.seed, ranking=pairs)
     scores = core.score_head(head, x, columns)
     passes = np.array([not s["rejection_reasons"] for s in sites])
     training = {"raw": evaluate(targets, scores), "filtered": evaluate(targets, scores, passes),
@@ -223,7 +248,11 @@ def train(args):
             if len(set(targets[i] for i in tr)) < 2:
                 folds.append({**fold, "status": "skipped_single_class_training"})
                 continue
-            model, _ = core.fit(x[tr], y[tr], w[tr], args.epochs, cols, args.seed)
+            fold_pairs = pairs if ordering and str(group) != ordering['parent_group'] else None
+            model, _ = core.fit(x[tr], y[tr], w[tr], args.epochs, cols, args.seed, ranking=fold_pairs)
+            fold['ranking_observations_in_training'] = int(fold_pairs is not None)
+            if ordering and str(group) == ordering['parent_group']:
+                fold['heldout_ordering'] = ranking.stats(model, pairs, cols)
             pred = core.score_head(model, x[te], cols)
             folds.append({**fold, "status": "evaluated", "raw": evaluate(y[te].tolist(), pred),
                           "filtered": evaluate(y[te].tolist(), pred, passes[te])})
@@ -248,6 +277,14 @@ def train(args):
                "trainable_parameters": sum(p.numel() for p in head.parameters()),
                "training": training, "diagnostics": diagnostics, "feedback": feedback_stats,
                "checkpoint_sha256": core.sha(checkpoint), "reload_verified": True}
+    if ordering:
+        summary['ranking_training'] = ranking.stats(head, pairs, columns)
+        summary['ranking_observations'] = 1
+        a,b = core.score_head(head,pairs['preferred'],columns),core.score_head(head,pairs['other'],columns)
+        core.write_jsonl(args.output/'ranking_predictions.jsonl', [
+            {'record_id':item['sample']['record_id'],'start':item['start'],
+             'cys3_score':float(u),'cys14_score':float(v),'cys3_higher':bool(u>v),
+             'scope':'training ordering resubstitution'} for item,u,v in zip(ordering['samples'],a,b)])
     core.write_json(args.output / "summary.json", summary)
     for name, digest in config["source_sha256"].items():
         if core.sha(args.source / name) != digest:
@@ -260,8 +297,8 @@ def predict(args):
         raise FileExistsError(args.output)
     torch.set_num_threads(4)
     saved = torch.load(args.checkpoint, weights_only=True, map_location="cpu")
-    if saved["config"].get("version") not in ("zqy7-v1", "zqy8-v1"):
-        raise ValueError("Use a ZQY7/8 checkpoint; do not silently change old model rules")
+    if saved["config"].get("version") not in ("zqy7-v1", "zqy8-v1", "part2-20260924-v1", "sst-ranking-20260924-v1"):
+        raise ValueError("Use a supported site checkpoint; do not silently change old model rules")
     backbone = core.ProteinMPNN(num_letters=21, node_features=128, edge_features=128, hidden_dim=128,
                                num_encoder_layers=3, num_decoder_layers=3, vocab=21, k_neighbors=48,
                                augment_eps=0.0, dropout=0.0, ca_only=True).eval().requires_grad_(False)

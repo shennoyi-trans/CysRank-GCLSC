@@ -7,6 +7,7 @@ MarkupSafe==3.0.3
 mpmath==1.3.0
 networkx==3.6.1
 numpy==2.5.2
+biopython==1.88
 setuptools==78.1.0
 sympy==1.14.0
 torch==2.11.0+cu128

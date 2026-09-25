@@ -1,8 +1,28 @@
 # CysRank: Structure-Aware Cysteine Site Prioritization
 
+当前正式模型为 **sst-ranking-20260924-v1**：保留 22 个分类监督位点，新增一条 SST 实验排序监督。SST 已属于训练数据，99/100 构象排序符合仅为训练回代；见 [当前训练报告](docs/SST_TRAINING.md)。下文早期 MD/PROPKA 对照记录属于旧版模型。
+
 面向多肽环化研究，本项目将蛋白质预训练模型的结构表征与位点生化特征相结合，建立从实验数据组织、模型训练到候选排序和结果追溯的计算流程，为后续实验提供可复核的半胱氨酸位点优先级参考。
 
-系统以多肽序列、Cα 坐标及逐残基结构特征为输入，对已有半胱氨酸（Cys）位点进行评分，结合结构约束筛选候选，并输出包含预测分数、结构特征和模型版本的 Top 3 清单。项目支持本地运行、CPU 推理和一键复现，适用于候选位点初筛与实验反馈驱动的模型迭代。
+系统支持对已有半胱氨酸（Cys）位点评分，也支持在输入窗口提供陌生多肽后，自动枚举新增一个 Cys 的候选序列、调用本地 ESMFold 预测结构，并输出 Top3 新序列及外部能垒评估交接包。通过过滤的候选不足三条时，按内部评分补足，并提示成功可能性较低及原因。另提供外部模拟能垒反馈与独立回归接口。
+
+## 陌生序列插入设计
+
+**自动流程与输入窗口：**在项目 Python 环境安装 `requirements-folding.txt` 后运行 `python app.py`，打开 http://127.0.0.1:8765 。首次下载 ESMFold 权重，后续可用 `--local-files-only` 离线运行。界面保留目标多肽输入框、运行进度、Top3 与外部评估包下载。见 [自动预测与部署说明](docs/AUTOMATIC_DESIGN.md)。
+
+```powershell
+python design.py run --sequence AGKSTV --record-id demo_only --output results/auto_design_demo
+```
+
+以下手工提供结构的流程仍可使用：
+
+```powershell
+python design.py prepare --sequence AGKSTV --record-id demo_only --output results/design_demo_requests
+# 填写生成的结构清单，提供每条插入后候选的真实配套 PDB
+python design.py score --candidates results/design_demo_requests/candidates.jsonl --structures results/design_demo_requests/structures.json --output results/design_demo_scored
+```
+
+上述序列仅用于流程示例。新 Cys 为新增残基，输出长度增加 1；原序列 PDB 不能直接代替插入后结构。评分后导出 Top3 CSV、结构证据、PDB 副本和待填写的能垒请求。完整使用方法及结构来源要求见 [插入设计说明](docs/DESIGN_WORKFLOW.md)。下文 `predict.py` 和 `run.py` 仍是已有位点评分与训练复现入口。
 
 ## 项目特色
 
@@ -117,7 +137,7 @@ python -m jupyterlab
 
 选择与项目依赖相同的 Python 内核，打开 Notebook 后执行 **Restart Kernel and Run All Cells**。默认 50 轮，参数单元格可改为 1 轮冒烟检查。可从仓库根目录或 notebooks 目录启动；内核工作目录在仓库之外时，先设置 `CYSRANK_ROOT` 指向移植后的仓库。
 
-所有数据、模型和输出路径仍基于仓库根目录。每次完整执行都会写入新的 `logs/notebook/<运行编号>/`，不会替换正式权重或覆盖已有候选清单。Notebook 中的候选属于训练回代示例，不能当作独立验证。执行验证记录见 [notebook_execution.json](logs/verification/notebook_execution.json)。
+所有数据、模型和输出路径仍基于仓库根目录。每次完整执行都会写入新的 `logs/notebook/<运行编号>/`，不会替换正式权重或覆盖已有候选清单。Notebook 中的候选属于训练回代示例，不能当作独立验证。旧 notebook 与旧输出已归档至 tmp/archive/before_part2_retrain_20260924；当前 notebook 保存新一轮执行输出。
 
 ## 训练与迭代
 
@@ -156,6 +176,10 @@ python train.py --feedback data/feedback/reviewed.jsonl --output logs/feedback_i
 
 反馈文件由使用者提供，字段与审核要求见 [反馈接口说明](docs/FEEDBACK.md)。
 
+### 外部能垒模拟反馈
+
+已提供独立的模拟能垒训练接口：`barrier.py requests` 导出计算请求，计算人员交回结果后由 `feedback.py` 校验，`barrier.py train` 训练能垒回归器，`barrier.py predict` 为同一计算协议下的新位点评估能垒。支持 GFN2-xTB 或 DFT 结果，电子能垒与活化自由能分别建模。模拟不进入原有实验分类头，计算失败和未审核结果不训练。交接字段、命令和限制见 [能垒接口说明](docs/BARRIER_INTERFACE.md)。量化计算由外部执行，本项目尚无真实能垒反馈或已验证的能垒模型。
+
 ## 数据与结果格式
 
 ### 输入
@@ -180,29 +204,32 @@ python train.py --feedback data/feedback/reviewed.jsonl --output logs/feedback_i
 
 候选 CSV 包含候选编号、所属赛道、序列、Cys 位置、关键预测分数、排序、模型版本、运行版本、权重哈希、结构文件引用、四项结构特征和备注。位点采用 1-based 编号，分数保留 8 位小数。
 
-评分用于候选优先级比较，不代表经过校准的反应效率。当前输出针对输入中已有的 Cys 位点；新 Cys 插入、候选结构生成和后续活性验证属于进一步扩展方向。
+评分用于候选优先级比较。`predict.py` 评估已有 Cys 位点；`design.py run` 自动生成候选配套结构并完成评分与筛选，`design.py score` 支持手工结构输入。GFN2-xTB 计算及实验验证由外部完成。
 
 ## 实验结果与可复现性
 
-当前训练数据包含 16 条记录、19 个已标注位点，其中 5 个正位点、14 个负位点。训练回代分类为 19/19，BCE 从 0.579453 降至 0.060355，表明分类头能够拟合当前监督数据。母蛋白分组留出中，两个可评估正位点命中为 0/2，且缺少独立阴性测试；当前结果支持流程复现与方法探索，泛化能力仍需更多独立实验数据验证。
+本轮完成正例 SASA 特征更新后的数据整合，采用 19 条记录、22 个监督位点（8 正、14 负）训练轻量分类头。固定 50 轮训练后，BCE 从 **0.592711 降至 0.051014**，训练回代 **22/22** 正确；母蛋白分组诊断命中 **3/5 个可评估正位点**。
 
-项目已完成以下工程验证：
+已完成的工作包括：
 
-- **完整流程复现：** 50 轮训练、参数优化、推理和候选导出均可执行，训练指标及分组诊断与原记录一致。
-- **模型加载一致性：** 19 个位点重新推理的分数与已保存结果完全一致。
-- **目录迁移验证：** 项目复制到新位置，并从仓库外启动后，预测 CSV 保持一致，训练流程正常运行。
-- **自动化回归验证：** 12 项测试覆盖监督掩码、反馈隔离、标签不进入模型特征、结构平移不变性等关键行为。
+- **数据管理：** 统一监督标签语义，保留清洗记录、来源哈希和版本快照。
+- **模型训练：** 融合预训练结构表征、序列上下文和生化特征，以 364 个可训练参数完成任务适配。
+- **候选筛选：** 统一评分、规则过滤与 Top 3 导出，同时保存全部位点评分和筛选依据。
+- **可复现验证：** 28 项自动测试通过；完整模型 CPU 重载通过，Notebook 从头执行后与正式训练指标和分组诊断一致。
+- **拓展接口：** 支持插入候选枚举、外部配套结构评分及实验反馈数据接入。
+
+评估范围：22/22 为训练拟合结果，3/5 为小样本正例分组诊断，无独立阴性测试；两者不代表新游离短肽的总体准确率。本轮同时更新特征与样本组成，不将指标差异单独归因于 SASA。适用范围见 Model Card。
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-完整说明见 [Model Card](models/MODEL_CARD.md)、[训练报告](logs/original/TRAINING_REPORT.md) 和 [验证记录](logs/verification/verification.json)。
+完整说明见 [Model Card](models/MODEL_CARD.md)、[训练报告](logs/retrain_20260924/TRAINING_REPORT.md) 和 [验证记录](logs/verification_20260924/verification.json)。
 
 ## 项目结构
 
 ```text
-GCLSC/
+CysRank-GCLSC/
 ├── README.md                 # 项目介绍与使用指南
 ├── requirements.txt          # 运行依赖及版本
 ├── configs/                  # 训练配置
@@ -213,16 +240,48 @@ GCLSC/
 ├── predict.py                # 标准化结果生成入口
 ├── screen.py                 # 候选筛选入口
 ├── run.py                    # 完整流程入口
+├── design.py                 # 单 Cys 插入设计及结构评分入口
+├── barrier.py                # 能垒请求、训练和预测入口
 ├── feedback.py               # 反馈校验与归档入口
 ├── results/                  # 示例结果与位点评分
 ├── logs/                     # 训练、评估与验证记录
 ├── tests/                    # 自动化测试
 ├── docs/                     # 数据接口、第三方说明与提交规范
+├── notebooks/               # 可执行的训练与筛选演示
+├── tools/                   # 本地提交包生成工具
 └── licenses/                 # 第三方许可证
 ```
+
+## 还原态测试肽：Cys3 与 Cys14
+
+已按提供方确认的 Ac/NH2 端基、还原巯基、pH 7.5、300 K，完成 10 起点短时显式水模拟。100 个生产快照中仅 7 个为 Cys3 更高，平均分 Cys3=0.8918、Cys14=0.9853；按起点平均，10 条均为 Cys14 更高。因此当前计算未稳定复现实验排序，不能称为独立有效性验证。
+
+[查看案例与复现命令](docs/REDUCED_PEPTIDE_CASE.md) · [打开案例 Notebook](notebooks/02_reduced_peptide_case.ipynb) · [逐位点结果与结构关联](results/2mi1_reduced_capped_ph75_20260924/analysis/results.csv)
+
+只复算随附结构：`python tools/analyze_2mi1_reduced_md.py --output results/2mi1_reanalysis`。重做模拟另安装 `requirements-md.txt`；详见案例指南中的 OpenCL 配置。该案例不插入新残基、不预测反应能垒，不改变正式模型。
+
+## 本地整理与打包
+
+专题说明集中在 docs，详见 [整理说明](docs/PROJECT_LAYOUT.md)。重复运行产物、历史版本、编辑器配置和过程文件统一归档到 tmp。正式运行无需读取 tmp 中的代码或数据，环境按 requirements.txt 配置。
+
+另提供 [KTTKS 文献案例](docs/KTTKS_CASE_STUDY.md)及 results/kttks_design_requests/ 下的六条待评估序列，目前没有候选结构或排名。
+
+```bash
+python tools/package_submission.py --output tmp/agents/submission/CysRank-GCLSC.zip
+```
+
+打包工具使用明确的文件目录范围并生成逐文件 SHA-256 清单，排除 tmp、.git、本机环境、缓存及重复 Notebook 运行目录。只生成本地检查包，不上传；输出须为新路径。历史完整流程耗时约 12–37 秒，实际耗时随硬件和加载状态变化。
 
 ## 数据来源与第三方声明
 
 项目基于 ProteinMPNN 的预训练结构编码能力，增加 Cys 位点监督分类头、生化特征融合、候选筛选及反馈管理流程。ProteinMPNN 的 MIT 许可保留于 [licenses/ProteinMPNN-MIT.txt](licenses/ProteinMPNN-MIT.txt)，本地模型版本与文件哈希见 [第三方说明](docs/THIRD_PARTY.md)。
 
 数据来源、清洗、划分及许可信息见 [数据说明](data/README.md)。部分原始实验来源、数据授权和获取时间尚需数据提供方补充；正式提交范围及候选字段需与实际赛道要求核对，详见 [提交要求核对表](docs/SUBMISSION_CHECKLIST.md)。`tmp/`、`.git/`、本机虚拟环境与缓存不属于提交内容。
+
+
+PROPKA 固定 λ=0.5 的探索性对照已完成：Cys3 更高的生产快照由 7/100 变为 6/100，未改善实验排序。包含端基类型适配及其局限，见 [完整报告](results/2mi1_propka_lambda05_20260924/REPORT.md)。
+
+
+## 当前模型：SST 排序监督版
+
+正式权重已更新为 sst-ranking-20260924-v1。原 22 个分类标签不变，新增一条 Cys3 > Cys14 实验排序监督；100 个构象共同占一条观察的权重。SST 训练回代 99/100 帧排序符合，不能作为独立验证。此前还原态/PROPKA 报告保留为旧模型对照。见 [重训说明](docs/SST_TRAINING.md)。

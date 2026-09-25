@@ -1,2 +1,0 @@
-{"record_id": "positive_001", "seq": "ECG", "position_1based": 2, "parent_group": "old3_positive_03", "y": 1, "rejection_reasons": [], "is_disulfide": 0, "sasa": 141.8, "prev_is_pro": 0, "nearby_atoms": 8, "raw_score": 0.01940755732357502}
-{"record_id": "positive_005", "seq": "DVQAVCSQKNV", "position_1based": 6, "parent_group": "old3_positive_07", "y": 1, "rejection_reasons": [], "is_disulfide": 0, "sasa": 0.04, "prev_is_pro": 0, "nearby_atoms": 26, "raw_score": 0.28583163022994995}

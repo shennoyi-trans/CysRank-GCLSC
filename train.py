@@ -1,4 +1,4 @@
-"""Train the ZQY8 site head; all relative paths are repository-root-relative."""
+"""Train the site head; all relative paths are repository-root-relative."""
 import argparse
 import json
 from types import SimpleNamespace

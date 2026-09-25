@@ -1,0 +1,64 @@
+{
+  "model_sha256": "cbd6d0cba08d88f651c50408195bd6dacb4a41224dc2a1e87ef859185fcc77ec",
+  "pdb_sha256": "2b22e410e41cf8292fb6e8a1e91cea9d4d9a9d184113c74a3fda6084a3d0a811",
+  "script_sha256": "14650e4c4e2653ce322e9f74716e1026ab9ad9b123d9e2920d4799626cd96aea",
+  "structure_code_sha256": "ffdce06d2c0940b8acd0e8df155c0653ad2f7a06f1327f9bcd50cc7ae890f710",
+  "model_version": "part2-20260924-v1",
+  "scope": "Existing Cys scoring, all PDB conformers; no insertion or model tuning",
+  "experimental_statement": "User reports pre-reaction reduction; oxidized state cannot react; expected Cys3 > Cys14 was known before scoring",
+  "reduction_operation": "Set is_disulfide=0 at Cys3 and Cys14 only; retain all oxidized coordinates and other features",
+  "is_reduced_structure": false,
+  "independent_test": false,
+  "training_overlap_sequences": [
+    "AGCKNFFW",
+    "KTFTSC"
+  ],
+  "geometry_failures": 0,
+  "summaries": {
+    "oxidized": {
+      "conformers": 10,
+      "cys3_higher_count": 0,
+      "cys3_score": {
+        "mean": 0.7508259654045105,
+        "min": 0.6457402110099792,
+        "max": 0.9007535576820374
+      },
+      "cys14_score": {
+        "mean": 0.96116703748703,
+        "min": 0.9438359141349792,
+        "max": 0.9731602072715759
+      },
+      "cys3_minus_cys14": {
+        "mean": -0.21034107208251954,
+        "min": -0.32686805725097656,
+        "max": -0.047386765480041504
+      }
+    },
+    "reduction_assumption": {
+      "conformers": 10,
+      "cys3_higher_count": 0,
+      "cys3_score": {
+        "mean": 0.801419585943222,
+        "min": 0.7113962173461914,
+        "max": 0.9246613383293152
+      },
+      "cys14_score": {
+        "mean": 0.9709659695625306,
+        "min": 0.9578511118888855,
+        "max": 0.9800127148628235
+      },
+      "cys3_minus_cys14": {
+        "mean": -0.16954638361930846,
+        "min": -0.268202543258667,
+        "max": -0.03646433353424072
+      }
+    }
+  },
+  "limitations": [
+    "Oxidized NMR conformers are not reduced-state conformers",
+    "No hydrogens added, geometry relaxation or reduced-state structure prediction performed",
+    "SASA and crowding recomputed on full oxidized peptide with repository definitions; historical training feature definitions not independently verified",
+    "Conformer variation is not a confidence interval or independent experimental replication",
+    "Classification score is not reaction efficiency; expected ordering known and source overlaps training"
+  ]
+}

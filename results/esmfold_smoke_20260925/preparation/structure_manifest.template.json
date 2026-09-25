@@ -1,0 +1,38 @@
+[
+  {
+    "sequence": "CAG",
+    "structure_id": "esmfold_smoke_insert_C_after_0",
+    "candidate_ids": [
+      "esmfold_smoke_insert_C_after_0"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "ACG",
+    "structure_id": "esmfold_smoke_insert_C_after_1",
+    "candidate_ids": [
+      "esmfold_smoke_insert_C_after_1"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  },
+  {
+    "sequence": "AGC",
+    "structure_id": "esmfold_smoke_insert_C_after_2",
+    "candidate_ids": [
+      "esmfold_smoke_insert_C_after_2"
+    ],
+    "structure_file": null,
+    "chain_id": null,
+    "model_index": 1,
+    "structure_method": null,
+    "structure_notes": null
+  }
+]

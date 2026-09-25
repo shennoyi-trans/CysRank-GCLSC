@@ -1,0 +1,26 @@
+{
+  "operation": "single_Cys_insertion_design",
+  "candidate_count": 6,
+  "scored_count": 6,
+  "unique_top_sequences": 3,
+  "requested_top_k": 3,
+  "missing_candidate_ids": [],
+  "ranking_scope": "all enumerated insertion sites",
+  "model_sha256": "58f1c0ec37d005d971078b6d6d148f6b7fe693f7d5c4951db9d67c699629b1d4",
+  "candidate_manifest_sha256": "94d47274f2b5092e7d5d5debcf37d74740605b4eb4ae13fe3621d6285384c69c",
+  "code_sha256": {
+    "design": "2648e120764dff04b2416eb45c409182d94d9521f24d7bc39fdc222c7c66086d",
+    "structure": "ffdce06d2c0940b8acd0e8df155c0653ad2f7a06f1327f9bcd50cc7ae890f710"
+  },
+  "structure_manifest_sha256": "9e0e4b956a255299fd1cd543ccd12057cf7783d78c7fa1dc51a57a9df1b2561c",
+  "fallback_count": 0,
+  "ranking": "passing candidates first, then scored filtered candidates to fill top-k; descending score within each tier; unique sequences",
+  "threshold_policy": "0.5 classification reported separately; not a threshold for design prioritization",
+  "limitations": [
+    "No demonstrated insertion-design generalization",
+    "Scores are not cyclization efficiency",
+    "Structure-feature calculation may differ from historical training data",
+    "Geometry checks do not validate folding or reaction chemistry",
+    "Legacy previous-Pro hard filter retained from checkpoint; hypothesis only"
+  ]
+}

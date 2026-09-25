@@ -1,0 +1,514 @@
+{
+  "source_code_data_hashes_match_training": true,
+  "prepared_data_identical": true,
+  "frozen_backbone_matches": true,
+  "training_score_max_error": 0.0,
+  "retrain_weight_max_error": 0.0,
+  "model_sha256": "cbd6d0cba08d88f651c50408195bd6dacb4a41224dc2a1e87ef859185fcc77ec",
+  "training_sites": [
+    {
+      "id": "positive_001",
+      "seq": "ECG",
+      "position": 2,
+      "parent": "old3_positive_03",
+      "parent_position": 2,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 141.8,
+      "prev_is_pro": 0,
+      "nearby_atoms": 8
+    },
+    {
+      "id": "positive_002",
+      "seq": "ALYLVCGERG",
+      "position": 6,
+      "parent": "old3_positive_04",
+      "parent_position": 11,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 18.02,
+      "prev_is_pro": 0,
+      "nearby_atoms": 30
+    },
+    {
+      "id": "positive_003",
+      "seq": "AGCKNFFW",
+      "position": 3,
+      "parent": "old3_positive_05",
+      "parent_position": 3,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 19.56,
+      "prev_is_pro": 0,
+      "nearby_atoms": 15
+    },
+    {
+      "id": "positive_004",
+      "seq": "KTFTSC",
+      "position": 6,
+      "parent": "old3_positive_05",
+      "parent_position": 14,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 29.49,
+      "prev_is_pro": 0,
+      "nearby_atoms": 12
+    },
+    {
+      "id": "positive_005",
+      "seq": "VHKECCHGDLL",
+      "position": 6,
+      "parent": "old3_positive_06",
+      "parent_position": 245,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 8.98,
+      "prev_is_pro": 0,
+      "nearby_atoms": 23
+    },
+    {
+      "id": "positive_006",
+      "seq": "KLKECCDKPLL",
+      "position": 6,
+      "parent": "old3_positive_06",
+      "parent_position": 278,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 30.14,
+      "prev_is_pro": 0,
+      "nearby_atoms": 28
+    },
+    {
+      "id": "positive_007",
+      "seq": "KVTKCCTESLV",
+      "position": 6,
+      "parent": "old3_positive_06",
+      "parent_position": 476,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 10.54,
+      "prev_is_pro": 0,
+      "nearby_atoms": 22
+    },
+    {
+      "id": "positive_008",
+      "seq": "SKYPNCAYKTT",
+      "position": 6,
+      "parent": "old3_positive_07",
+      "parent_position": 95,
+      "y": 1,
+      "is_disulfide": 0,
+      "sasa": 8.57,
+      "prev_is_pro": 0,
+      "nearby_atoms": 33
+    },
+    {
+      "id": "negative_001",
+      "seq": "VHKECCHGDLLECADDRADLAK",
+      "position": 5,
+      "parent": "old3_positive_06",
+      "parent_position": 244,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 13.35,
+      "prev_is_pro": 0,
+      "nearby_atoms": 25
+    },
+    {
+      "id": "negative_001",
+      "seq": "VHKECCHGDLLECADDRADLAK",
+      "position": 6,
+      "parent": "old3_positive_06",
+      "parent_position": 245,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 8.98,
+      "prev_is_pro": 0,
+      "nearby_atoms": 26
+    },
+    {
+      "id": "negative_001",
+      "seq": "VHKECCHGDLLECADDRADLAK",
+      "position": 13,
+      "parent": "old3_positive_06",
+      "parent_position": 252,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 0.0,
+      "prev_is_pro": 0,
+      "nearby_atoms": 22
+    },
+    {
+      "id": "negative_002",
+      "seq": "VGTRCCTKPESER",
+      "position": 5,
+      "parent": "old3_positive_06",
+      "parent_position": 436,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 0.0,
+      "prev_is_pro": 0,
+      "nearby_atoms": 29
+    },
+    {
+      "id": "negative_002",
+      "seq": "VGTRCCTKPESER",
+      "position": 6,
+      "parent": "old3_positive_06",
+      "parent_position": 437,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 25.89,
+      "prev_is_pro": 0,
+      "nearby_atoms": 24
+    },
+    {
+      "id": "negative_003",
+      "seq": "SHCIAEVEK",
+      "position": 3,
+      "parent": "old3_positive_06",
+      "parent_position": 288,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 33.82,
+      "prev_is_pro": 0,
+      "nearby_atoms": 21
+    },
+    {
+      "id": "negative_004",
+      "seq": "RPCFSALTPDETYVPK",
+      "position": 3,
+      "parent": "old3_positive_06",
+      "parent_position": 486,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 31.83,
+      "prev_is_pro": 1,
+      "nearby_atoms": 17
+    },
+    {
+      "id": "negative_005",
+      "seq": "NECFLSHKDDSPDLPK",
+      "position": 3,
+      "parent": "old3_positive_06",
+      "parent_position": 101,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 18.83,
+      "prev_is_pro": 0,
+      "nearby_atoms": 21
+    },
+    {
+      "id": "negative_006",
+      "seq": "LRCASIQKFGER",
+      "position": 3,
+      "parent": "old3_positive_06",
+      "parent_position": 199,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 8.12,
+      "prev_is_pro": 0,
+      "nearby_atoms": 25
+    },
+    {
+      "id": "negative_007",
+      "seq": "LCVLHEKTPVSEKVTK",
+      "position": 2,
+      "parent": "old3_positive_06",
+      "parent_position": 460,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 8.98,
+      "prev_is_pro": 0,
+      "nearby_atoms": 29
+    },
+    {
+      "id": "negative_008",
+      "seq": "HLVDEPQNLIKQNCDQFEK",
+      "position": 14,
+      "parent": "old3_positive_06",
+      "parent_position": 391,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 21.57,
+      "prev_is_pro": 0,
+      "nearby_atoms": 20
+    },
+    {
+      "id": "negative_009",
+      "seq": "GACLLPK",
+      "position": 3,
+      "parent": "old3_positive_06",
+      "parent_position": 176,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 36.68,
+      "prev_is_pro": 0,
+      "nearby_atoms": 19
+    },
+    {
+      "id": "negative_010",
+      "seq": "DLGEEHFKGLVLIAFSQYLQQCPFDEHVK",
+      "position": 22,
+      "parent": "old3_positive_06",
+      "parent_position": 34,
+      "y": 0,
+      "is_disulfide": 0,
+      "sasa": 12.87,
+      "prev_is_pro": 0,
+      "nearby_atoms": 21
+    },
+    {
+      "id": "negative_011",
+      "seq": "CASIQKFGER",
+      "position": 1,
+      "parent": "old3_positive_06",
+      "parent_position": 199,
+      "y": 0,
+      "is_disulfide": 1,
+      "sasa": 8.12,
+      "prev_is_pro": 0,
+      "nearby_atoms": 25
+    }
+  ],
+  "class_summary": {
+    "0": {
+      "n": 14,
+      "parents": {
+        "old3_positive_06": 14
+      },
+      "disulfide": {
+        "1": 13,
+        "0": 1
+      },
+      "lengths": [
+        22,
+        22,
+        22,
+        13,
+        13,
+        9,
+        16,
+        16,
+        12,
+        16,
+        19,
+        7,
+        29,
+        10
+      ],
+      "feature_ranges": {
+        "is_disulfide": [
+          0,
+          1
+        ],
+        "sasa": [
+          0.0,
+          36.68
+        ],
+        "prev_is_pro": [
+          0,
+          1
+        ],
+        "nearby_atoms": [
+          17,
+          29
+        ]
+      }
+    },
+    "1": {
+      "n": 8,
+      "parents": {
+        "old3_positive_03": 1,
+        "old3_positive_04": 1,
+        "old3_positive_05": 2,
+        "old3_positive_06": 3,
+        "old3_positive_07": 1
+      },
+      "disulfide": {
+        "0": 8
+      },
+      "lengths": [
+        3,
+        10,
+        8,
+        6,
+        11,
+        11,
+        11,
+        11
+      ],
+      "feature_ranges": {
+        "is_disulfide": [
+          0,
+          0
+        ],
+        "sasa": [
+          8.57,
+          141.8
+        ],
+        "prev_is_pro": [
+          0,
+          0
+        ],
+        "nearby_atoms": [
+          8,
+          33
+        ]
+      }
+    }
+  },
+  "same_parent_site_multiple_records": [
+    [
+      {
+        "id": "positive_005",
+        "seq": "VHKECCHGDLL",
+        "position": 6,
+        "parent": "old3_positive_06",
+        "parent_position": 245,
+        "y": 1,
+        "is_disulfide": 0,
+        "sasa": 8.98,
+        "prev_is_pro": 0,
+        "nearby_atoms": 23
+      },
+      {
+        "id": "negative_001",
+        "seq": "VHKECCHGDLLECADDRADLAK",
+        "position": 6,
+        "parent": "old3_positive_06",
+        "parent_position": 245,
+        "y": 0,
+        "is_disulfide": 1,
+        "sasa": 8.98,
+        "prev_is_pro": 0,
+        "nearby_atoms": 26
+      }
+    ],
+    [
+      {
+        "id": "negative_006",
+        "seq": "LRCASIQKFGER",
+        "position": 3,
+        "parent": "old3_positive_06",
+        "parent_position": 199,
+        "y": 0,
+        "is_disulfide": 1,
+        "sasa": 8.12,
+        "prev_is_pro": 0,
+        "nearby_atoms": 25
+      },
+      {
+        "id": "negative_011",
+        "seq": "CASIQKFGER",
+        "position": 1,
+        "parent": "old3_positive_06",
+        "parent_position": 199,
+        "y": 0,
+        "is_disulfide": 1,
+        "sasa": 8.12,
+        "prev_is_pro": 0,
+        "nearby_atoms": 25
+      }
+    ]
+  ],
+  "bias": -0.04470960795879364,
+  "bio_weights_normalized": {
+    "is_disulfide": -0.3018084466457367,
+    "sasa": 0.21922466158866882,
+    "prev_is_pro": -0.19979016482830048,
+    "nearby_atoms": -0.09937001019716263
+  },
+  "mean_cys14_minus_cys3_logit_contributions": {
+    "structure": 1.395177423208952,
+    "sequence": 0.720885157585144,
+    "is_disulfide": 0.0,
+    "sasa": 0.0033559912815690042,
+    "prev_is_pro": 0.0,
+    "nearby_atoms": 0.006092950776219368
+  },
+  "sequence_offset_contributions": [
+    {
+      "offset": -5,
+      "cys14_minus_cys3_logit": 0.4839153289794922
+    },
+    {
+      "offset": -4,
+      "cys14_minus_cys3_logit": 0.3661873936653137
+    },
+    {
+      "offset": -3,
+      "cys14_minus_cys3_logit": 0.3661873936653137
+    },
+    {
+      "offset": -2,
+      "cys14_minus_cys3_logit": -0.29258236289024353
+    },
+    {
+      "offset": -1,
+      "cys14_minus_cys3_logit": -0.055534686893224716
+    },
+    {
+      "offset": 0,
+      "cys14_minus_cys3_logit": 0.0
+    },
+    {
+      "offset": 1,
+      "cys14_minus_cys3_logit": -0.055534686893224716
+    },
+    {
+      "offset": 2,
+      "cys14_minus_cys3_logit": -0.05495183914899826
+    },
+    {
+      "offset": 3,
+      "cys14_minus_cys3_logit": 0.07166647166013718
+    },
+    {
+      "offset": 4,
+      "cys14_minus_cys3_logit": -0.05495183914899826
+    },
+    {
+      "offset": 5,
+      "cys14_minus_cys3_logit": -0.053515978157520294
+    }
+  ],
+  "diagnostic_refits_not_model_selection": {
+    "same_training_replay": {
+      "train_accuracy": 1.0,
+      "cys3_higher": 7,
+      "cys3_mean": 0.8918273448944092,
+      "cys14_mean": 0.9852837920188904
+    },
+    "without_biochemical": {
+      "train_accuracy": 1.0,
+      "cys3_higher": 7,
+      "cys3_mean": 0.8789188861846924,
+      "cys14_mean": 0.9829843640327454
+    },
+    "sequence_only": {
+      "train_accuracy": 0.9545454545454546,
+      "cys3_higher": 0,
+      "cys3_mean": 0.8730239868164062,
+      "cys14_mean": 0.9501189589500427
+    },
+    "structure_only": {
+      "train_accuracy": 1.0,
+      "cys3_higher": 7,
+      "cys3_mean": 0.6884673237800598,
+      "cys14_mean": 0.9568665027618408
+    },
+    "biochemical_only": {
+      "train_accuracy": 0.6363636363636364,
+      "cys3_higher": 36,
+      "cys3_mean": 0.43750283122062683,
+      "cys14_mean": 0.44417494535446167
+    },
+    "exclude_test_parent": {
+      "train_n": 20,
+      "cys3_higher": 26,
+      "cys3_mean": 0.4167940616607666,
+      "cys14_mean": 0.5237769484519958
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "sst-ranking-20260924-v1",
+  "ordering_sha256": "d6358e5dad35401a20bdcdc32820dc455d5362aa271b15888a9d6bdeceb0b4f8",
+  "binary_data_unchanged": {
+    "训练正例.jsonl": "b20d93bd0bfa8b64f7461e85c444e7c31908fba4e1ebceed7d6b7fe1d6c4bed1",
+    "训练集负例.jsonl": "8e29460b02b5049c43808405fdcd81115ca906afecf2c6643ec4f3501c051bb0"
+  },
+  "checkpoint_sha256": "58f1c0ec37d005d971078b6d6d148f6b7fe693f7d5c4951db9d67c699629b1d4",
+  "archive": "tmp/archive/before_sst_training_20260924",
+  "observations": 1,
+  "conformers": 100,
+  "explicit_binary_sst_labels": false
+}

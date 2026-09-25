@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-24",
+  "result_directory": "results/2mi1_reduced_capped_ph75_20260924",
+  "log_directory": "logs/reduced_md_20260924",
+  "protocol_and_snapshots_unchanged": true,
+  "original_execution_scripts": "logs/reduced_md_20260924/executed_scripts",
+  "archive": "tmp/archive/reduced_case_process_20260924",
+  "moves_manifest": "tmp/archive/reduced_case_process_20260924/MOVES.json",
+  "portable_tools_changes": "Removed local tmp dependency fallback and unused PDBFixer import; split logs from PDB snapshots; added standard results.csv and replay output option. No simulation equations or scoring features changed."
+}

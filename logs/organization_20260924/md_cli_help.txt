@@ -1,0 +1,20 @@
+usage: rebuild_2mi1_reduced.py [-h] [--output OUTPUT] [--ph PH]
+                               [--temperature TEMPERATURE]
+                               [--log-output LOG_OUTPUT]
+                               [--opencl-platform OPENCL_PLATFORM]
+                               [--device DEVICE]
+
+Build reduced 2MI1 and run a fixed short, multi-start explicit-water MD
+protocol. Install requirements.txt and requirements-md.txt. No scoring result
+controls sampling.
+
+options:
+  -h, --help            show this help message and exit
+  --output OUTPUT
+  --ph PH
+  --temperature TEMPERATURE
+  --log-output LOG_OUTPUT
+                        New directory for solvated systems, energy logs and
+                        restart files
+  --opencl-platform OPENCL_PLATFORM
+  --device DEVICE

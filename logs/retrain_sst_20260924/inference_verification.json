@@ -1,0 +1,6 @@
+{
+  "cpu_gpu_max_score_difference": 2.086162567138672e-06,
+  "tolerance": 1e-05,
+  "all_100_pair_rankings_identical": true,
+  "tests_exit_code": 0
+}

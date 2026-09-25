@@ -1,0 +1,252 @@
+[
+  {
+    "start": 1,
+    "seed": 20260925,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 5389,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 2,
+    "seed": 20260926,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 4724,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 3,
+    "seed": 20260927,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 5935,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 4,
+    "seed": 20260928,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 4487,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 5,
+    "seed": 20260929,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 3210,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 6,
+    "seed": 20260930,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 5326,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 7,
+    "seed": 20260931,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 4589,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 8,
+    "seed": 20260932,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 3147,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 9,
+    "seed": 20260933,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 3702,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  },
+  {
+    "start": 10,
+    "seed": 20260934,
+    "missing_atoms_repaired": {},
+    "missing_terminal_atoms": {
+      "ACE0": [
+        "CH3",
+        "C",
+        "O"
+      ],
+      "NHE15": [
+        "N"
+      ]
+    },
+    "removed_disulfide_pairs": [
+      [
+        "3",
+        "14"
+      ]
+    ],
+    "peptide_atoms": 229,
+    "solvated_atoms": 5788,
+    "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "status": "complete"
+  }
+]

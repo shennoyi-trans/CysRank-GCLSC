@@ -1,0 +1,38 @@
+[
+  {
+    "sequence": "CAG",
+    "structure_id": "esmfold_smoke_insert_C_after_0",
+    "candidate_ids": [
+      "esmfold_smoke_insert_C_after_0"
+    ],
+    "structure_file": "predicted_structures/esmfold_smoke_insert_C_after_0.pdb",
+    "chain_id": "A",
+    "model_index": 1,
+    "structure_method": "ESMFold v1 / Hugging Face Transformers",
+    "structure_notes": "Local single-sequence prediction; unrelaxed single conformer; free termini; no explicit reaction reagent. {\"model\": \"facebook/esmfold_v1\", \"revision\": \"75a3841ee059df2bf4d56688166c8fb459ddd97a\", \"device\": \"cpu\", \"chunk_size\": 32, \"stem_dtype\": \"torch.float16\", \"method\": \"ESMFold v1 / Hugging Face Transformers\"}"
+  },
+  {
+    "sequence": "ACG",
+    "structure_id": "esmfold_smoke_insert_C_after_1",
+    "candidate_ids": [
+      "esmfold_smoke_insert_C_after_1"
+    ],
+    "structure_file": "predicted_structures/esmfold_smoke_insert_C_after_1.pdb",
+    "chain_id": "A",
+    "model_index": 1,
+    "structure_method": "ESMFold v1 / Hugging Face Transformers",
+    "structure_notes": "Local single-sequence prediction; unrelaxed single conformer; free termini; no explicit reaction reagent. {\"model\": \"facebook/esmfold_v1\", \"revision\": \"75a3841ee059df2bf4d56688166c8fb459ddd97a\", \"device\": \"cpu\", \"chunk_size\": 32, \"stem_dtype\": \"torch.float16\", \"method\": \"ESMFold v1 / Hugging Face Transformers\"}"
+  },
+  {
+    "sequence": "AGC",
+    "structure_id": "esmfold_smoke_insert_C_after_2",
+    "candidate_ids": [
+      "esmfold_smoke_insert_C_after_2"
+    ],
+    "structure_file": "predicted_structures/esmfold_smoke_insert_C_after_2.pdb",
+    "chain_id": "A",
+    "model_index": 1,
+    "structure_method": "ESMFold v1 / Hugging Face Transformers",
+    "structure_notes": "Local single-sequence prediction; unrelaxed single conformer; free termini; no explicit reaction reagent. {\"model\": \"facebook/esmfold_v1\", \"revision\": \"75a3841ee059df2bf4d56688166c8fb459ddd97a\", \"device\": \"cpu\", \"chunk_size\": 32, \"stem_dtype\": \"torch.float16\", \"method\": \"ESMFold v1 / Hugging Face Transformers\"}"
+  }
+]

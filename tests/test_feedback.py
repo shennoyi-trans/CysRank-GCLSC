@@ -31,10 +31,10 @@ class FeedbackTests(unittest.TestCase):
             return run.merge_feedback(self.rows, path)
 
     def test_main_only_masks(self):
-        self.assertEqual(len(self.rows), 16)
-        self.assertEqual(sum(sum(r['ca_label']) for r in self.rows), 5)
+        self.assertEqual(len(self.rows), 19)
+        self.assertEqual(sum(sum(r['ca_label']) for r in self.rows), 8)
         self.assertEqual(sum(sum(r['confirmed_negative_mask']) for r in self.rows), 14)
-        self.assertEqual(sum(sum(r['label_mask']) for r in self.rows), 19)
+        self.assertEqual(sum(sum(r['label_mask']) for r in self.rows), 22)
         self.assertTrue(all(r['supervision_weight'] == 1 for r in self.rows))
         self.assertTrue(all('低' not in r['source_file'] for r in self.rows))
 
@@ -52,7 +52,7 @@ class FeedbackTests(unittest.TestCase):
     def test_simulation_and_unreviewed_not_supervised(self):
         for event in (self.event(evidence_type='simulation'), self.event(reviewed=False), self.event(split='holdout')):
             rows, stats = self.merge([event])
-            self.assertEqual(len(rows), 16)
+            self.assertEqual(len(rows), 19)
             self.assertEqual(stats['accepted'], 0)
 
     def test_reviewed_wet_accepted_with_explicit_outcome(self):
@@ -101,13 +101,13 @@ class FeedbackTests(unittest.TestCase):
                 pretrained=run.ROOT / 'models/pretrained/v_48_020.pt',
                 feedback=archive, epochs=1, seed=1, output=output))
             summary = run.json.loads((output / 'summary.json').read_text())
-            self.assertEqual(summary['training_sites'], 20)
+            self.assertEqual(summary['training_sites'], 23)
             self.assertEqual(summary['feedback']['accepted'], 1)
             self.assertEqual(summary['feedback']['simulation'], 1)
             prediction = folder / 'predictions.jsonl'
             run.predict(SimpleNamespace(checkpoint=output / 'final_model/site_predictor.pt',
                 input=output / 'prepared/training.jsonl', output=prediction))
-            self.assertEqual(len(run.core.load_jsonl(prediction)), 20)
+            self.assertEqual(len(run.core.load_jsonl(prediction)), 23)
 
 
 if __name__ == '__main__':
