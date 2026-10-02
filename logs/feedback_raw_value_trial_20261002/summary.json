@@ -1,0 +1,46 @@
+{
+  "status": "completed_exploratory_fit",
+  "training_observations": 3,
+  "parent_groups": 1,
+  "feature_dimension": 363,
+  "alpha": 1.0,
+  "target_unit": null,
+  "target_quantity": null,
+  "training_mae_raw_value": 0.023973475684981576,
+  "training_rmse_raw_value": 0.025528528432113035,
+  "training_mean_predictor_mae_raw_value": 5.2377777777777785,
+  "holdout": null,
+  "validation_note": "All observations used to fit; training errors do not measure generalization",
+  "formal_feedback_training_completed": false,
+  "formal_model_ready": false,
+  "draft_reason": "Unknown unit, quantity, laboratory protocol and review; original draft flags retained",
+  "structure_note": "Two unrelaxed predictions and one locally minimized free-terminus model input; not laboratory calculation structures",
+  "production_model_modified": false,
+  "observations": [
+    {
+      "observation_id": "return-d898b6202578:Ac_EEMQRR_NH2_insert_C_after_4:C5",
+      "geometry_passed": true,
+      "pdb_sha256": "2467062c4d02159191aab968446b897947768dfa2a3c8d6ddefb245a30f930bc",
+      "source_value_preserved": true,
+      "formal_validation_error": "Specify delta_e_dagger or delta_g_dagger, not a total/reaction energy",
+      "formal_training_eligible": false
+    },
+    {
+      "observation_id": "return-d898b6202578:Ac_EEMQRR_NH2_insert_C_after_3:C4",
+      "geometry_passed": true,
+      "pdb_sha256": "0e840f8d1c0bbfc5b63059d90b942ebf7c4311432f22dc972c08576fe93a0a7f",
+      "source_value_preserved": true,
+      "formal_validation_error": "Specify delta_e_dagger or delta_g_dagger, not a total/reaction energy",
+      "formal_training_eligible": false
+    },
+    {
+      "observation_id": "return-d898b6202578:Ac_EEMQRR_NH2_insert_C_after_2:C3",
+      "geometry_passed": true,
+      "pdb_sha256": "969dccb98d20ce10830bb4811e8da45ff90235beee42296aa600991ff7583f78",
+      "source_value_preserved": true,
+      "formal_validation_error": "Specify delta_e_dagger or delta_g_dagger, not a total/reaction energy",
+      "formal_training_eligible": false
+    }
+  ],
+  "model_reload_verified": true
+}
