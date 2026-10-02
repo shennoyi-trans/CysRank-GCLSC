@@ -1,6 +1,6 @@
 # CysRank: Structure-Aware Cysteine Site Prioritization
 
-当前正式模型为 **sst-ranking-20260924-v1**：保留 22 个分类监督位点，新增一条 SST 实验排序监督。SST 已属于训练数据，99/100 构象排序符合仅为训练回代；见 [当前训练报告](docs/SST_TRAINING.md)。下文早期 MD/PROPKA 对照记录属于旧版模型。
+当前正式模型为 **sst-ranking-20260924-v1**：保留 22 个分类监督位点，新增一条 SST 实验排序监督。SST 已属于训练数据，99/100 构象排序符合仅为训练回代；见 [当前训练报告](tmp/docs/SST_TRAINING.md)。下文早期 MD/PROPKA 对照记录属于旧版模型。
 
 面向多肽环化研究，本项目将蛋白质预训练模型的结构表征与位点生化特征相结合，建立从实验数据组织、模型训练到候选排序和结果追溯的计算流程，为后续实验提供可复核的半胱氨酸位点优先级参考。
 
@@ -8,7 +8,18 @@
 
 ## 陌生序列插入设计
 
-**自动流程与输入窗口：**在项目 Python 环境安装 `requirements-folding.txt` 后运行 `python app.py`，打开 http://127.0.0.1:8765 。首次下载 ESMFold 权重，后续可用 `--local-files-only` 离线运行。界面保留目标多肽输入框、运行进度、Top3 与外部评估包下载。见 [自动预测与部署说明](docs/AUTOMATIC_DESIGN.md)。
+**前端使用说明已保存在 [自动结构预测与多肽输入窗口](tmp/docs/AUTOMATIC_DESIGN.md)。** 该说明包含环境安装、启动参数、输入限制、排名规则和外部评估包内容；按当前赛事目录要求保留在 `tmp/docs/`，不在项目根目录创建 `docs/`。
+
+网页操作步骤：
+
+1. 在已安装 `requirements.txt` 的项目 Python 环境中执行 `python -m pip install -r requirements-folding.txt`，然后运行 `python app.py`。保持服务终端运行，在浏览器打开 [本地操作界面](http://127.0.0.1:8765)。首次使用需要下载 ESMFold 权重，缓存完整后可运行 `python app.py --local-files-only`。
+2. 在“目标多肽序列”中粘贴一条序列，例如 `AGKSTV`。只输入 20 种标准氨基酸单字母代码，不含 FASTA 标题、编号或端基修饰标记；空格和换行自动忽略，小写自动转大写。默认接受 2–100 个残基。
+3. 点击“开始预测”，等待结构预测和评分完成。可展开“查看运行详情”检查进度；同一服务一次只处理一个任务，CPU 预测可能较慢。连接中断时点击“重新连接任务”，服务仍在运行时也可刷新页面恢复当前任务。
+4. 在“推荐序列 / TOP 3”中查看候选。高亮的 `C` 是新增残基，候选长度比输入多 1；“新增 Cys”编号从候选序列第 1 位开始计数。优先展示通过过滤的候选，不足时按分数补足，并显示原因；不同序列不足三条时显示实际数量。模型分数用于排序，不是实验成功概率，本设计流程不以 0.5 为入选硬门槛。
+5. 点击“下载结构”保存候选 PDB，点击“查看报告”下载 Markdown 报告，或点击“下载外部评估包”保存包含 Top3 CSV、结构、评分和交接文件的 ZIP。网页不执行 GFN2-xTB 能垒计算。
+6. 默认结果保存在 `results/web_jobs/<任务编号>/design/`，日志在同一任务目录的 `progress.log`。服务重启后文件仍在，但网页不能恢复旧任务；请从磁盘读取结果。若显示“预测未完成”，先检查日志中的依赖、模型下载或内存错误，处理后重新提交。
+
+**当前目录迁移的已知影响：** `src/folding.py` 导出评估包时仍读取根目录下的 `docs/BARRIER_INTERFACE.md`，文件迁移后会导致导出阶段失败；`tools/package_submission.py` 也仍要求根目录存在 `docs/`。运行完整预测或打包前，需要将这些代码中的旧路径与当前目录布局同步。本次更新为文档入口整理，尚未修改这两处代码，也未重新执行完整预测。
 
 ```powershell
 python design.py run --sequence AGKSTV --record-id demo_only --output results/auto_design_demo
@@ -22,7 +33,7 @@ python design.py prepare --sequence AGKSTV --record-id demo_only --output result
 python design.py score --candidates results/design_demo_requests/candidates.jsonl --structures results/design_demo_requests/structures.json --output results/design_demo_scored
 ```
 
-上述序列仅用于流程示例。新 Cys 为新增残基，输出长度增加 1；原序列 PDB 不能直接代替插入后结构。评分后导出 Top3 CSV、结构证据、PDB 副本和待填写的能垒请求。完整使用方法及结构来源要求见 [插入设计说明](docs/DESIGN_WORKFLOW.md)。下文 `predict.py` 和 `run.py` 仍是已有位点评分与训练复现入口。
+上述序列仅用于流程示例。新 Cys 为新增残基，输出长度增加 1；原序列 PDB 不能直接代替插入后结构。评分后导出 Top3 CSV、结构证据、PDB 副本和待填写的能垒请求。完整使用方法及结构来源要求见 [插入设计说明](tmp/docs/DESIGN_WORKFLOW.md)。下文 `predict.py` 和 `run.py` 仍是已有位点评分与训练复现入口。
 
 ## 项目特色
 
@@ -174,11 +185,11 @@ python feedback.py --input data/feedback/incoming.jsonl --output data/feedback/r
 python train.py --feedback data/feedback/reviewed.jsonl --output logs/feedback_iteration
 ```
 
-反馈文件由使用者提供，字段与审核要求见 [反馈接口说明](docs/FEEDBACK.md)。
+反馈文件由使用者提供，字段与审核要求见 [反馈接口说明](tmp/docs/FEEDBACK.md)。
 
 ### 外部能垒模拟反馈
 
-已提供独立的模拟能垒训练接口：`barrier.py requests` 导出计算请求，计算人员交回结果后由 `feedback.py` 校验，`barrier.py train` 训练能垒回归器，`barrier.py predict` 为同一计算协议下的新位点评估能垒。支持 GFN2-xTB 或 DFT 结果，电子能垒与活化自由能分别建模。模拟不进入原有实验分类头，计算失败和未审核结果不训练。交接字段、命令和限制见 [能垒接口说明](docs/BARRIER_INTERFACE.md)。量化计算由外部执行，本项目尚无真实能垒反馈或已验证的能垒模型。
+已提供独立的模拟能垒训练接口：`barrier.py requests` 导出计算请求，计算人员交回结果后由 `feedback.py` 校验，`barrier.py train` 训练能垒回归器，`barrier.py predict` 为同一计算协议下的新位点评估能垒。支持 GFN2-xTB 或 DFT 结果，电子能垒与活化自由能分别建模。模拟不进入原有实验分类头，计算失败和未审核结果不训练。交接字段、命令和限制见 [能垒接口说明](tmp/docs/BARRIER_INTERFACE.md)。量化计算由外部执行，本项目尚无真实能垒反馈或已验证的能垒模型。
 
 ## 数据与结果格式
 
@@ -246,7 +257,7 @@ CysRank-GCLSC/
 ├── results/                  # 示例结果与位点评分
 ├── logs/                     # 训练、评估与验证记录
 ├── tests/                    # 自动化测试
-├── docs/                     # 数据接口、第三方说明与提交规范
+├── tmp/docs/                 # 本地使用说明与参考资料，不纳入提交包
 ├── notebooks/               # 可执行的训练与筛选演示
 ├── tools/                   # 本地提交包生成工具
 └── licenses/                 # 第三方许可证
@@ -256,15 +267,15 @@ CysRank-GCLSC/
 
 已按提供方确认的 Ac/NH2 端基、还原巯基、pH 7.5、300 K，完成 10 起点短时显式水模拟。100 个生产快照中仅 7 个为 Cys3 更高，平均分 Cys3=0.8918、Cys14=0.9853；按起点平均，10 条均为 Cys14 更高。因此当前计算未稳定复现实验排序，不能称为独立有效性验证。
 
-[查看案例与复现命令](docs/REDUCED_PEPTIDE_CASE.md) · [打开案例 Notebook](notebooks/02_reduced_peptide_case.ipynb) · [逐位点结果与结构关联](results/2mi1_reduced_capped_ph75_20260924/analysis/results.csv)
+[查看案例与复现命令](tmp/docs/REDUCED_PEPTIDE_CASE.md) · [打开案例 Notebook](notebooks/02_reduced_peptide_case.ipynb) · [逐位点结果与结构关联](results/2mi1_reduced_capped_ph75_20260924/analysis/results.csv)
 
 只复算随附结构：`python tools/analyze_2mi1_reduced_md.py --output results/2mi1_reanalysis`。重做模拟另安装 `requirements-md.txt`；详见案例指南中的 OpenCL 配置。该案例不插入新残基、不预测反应能垒，不改变正式模型。
 
 ## 本地整理与打包
 
-专题说明集中在 docs，详见 [整理说明](docs/PROJECT_LAYOUT.md)。重复运行产物、历史版本、编辑器配置和过程文件统一归档到 tmp。正式运行无需读取 tmp 中的代码或数据，环境按 requirements.txt 配置。
+专题说明现位于 `tmp/docs/`，README 中的相关链接已指向该位置；[历史整理说明](tmp/docs/PROJECT_LAYOUT.md) 中关于根目录 `docs/` 的描述反映迁移前布局。重复运行产物、历史版本、编辑器配置和过程文件统一归档到 tmp。环境按 requirements.txt 配置；旧路径对预测导出和打包的影响见上文。
 
-另提供 [KTTKS 文献案例](docs/KTTKS_CASE_STUDY.md)及 results/kttks_design_requests/ 下的六条待评估序列，目前没有候选结构或排名。
+另提供 [KTTKS 文献案例](tmp/docs/KTTKS_CASE_STUDY.md)及 results/kttks_design_requests/ 下的六条待评估序列，目前没有候选结构或排名。
 
 ```bash
 python tools/package_submission.py --output tmp/agents/submission/CysRank-GCLSC.zip
@@ -274,9 +285,9 @@ python tools/package_submission.py --output tmp/agents/submission/CysRank-GCLSC.
 
 ## 数据来源与第三方声明
 
-项目基于 ProteinMPNN 的预训练结构编码能力，增加 Cys 位点监督分类头、生化特征融合、候选筛选及反馈管理流程。ProteinMPNN 的 MIT 许可保留于 [licenses/ProteinMPNN-MIT.txt](licenses/ProteinMPNN-MIT.txt)，本地模型版本与文件哈希见 [第三方说明](docs/THIRD_PARTY.md)。
+项目基于 ProteinMPNN 的预训练结构编码能力，增加 Cys 位点监督分类头、生化特征融合、候选筛选及反馈管理流程。ProteinMPNN 的 MIT 许可保留于 [licenses/ProteinMPNN-MIT.txt](licenses/ProteinMPNN-MIT.txt)，本地模型版本与文件哈希见 [第三方说明](tmp/docs/THIRD_PARTY.md)。
 
-数据来源、清洗、划分及许可信息见 [数据说明](data/README.md)。部分原始实验来源、数据授权和获取时间尚需数据提供方补充；正式提交范围及候选字段需与实际赛道要求核对，详见 [提交要求核对表](docs/SUBMISSION_CHECKLIST.md)。`tmp/`、`.git/`、本机虚拟环境与缓存不属于提交内容。
+数据来源、清洗、划分及许可信息见 [数据说明](data/README.md)。部分原始实验来源、数据授权和获取时间尚需数据提供方补充；正式提交范围及候选字段需与实际赛道要求核对，详见 [提交要求核对表](tmp/docs/SUBMISSION_CHECKLIST.md)。`tmp/`、`.git/`、本机虚拟环境与缓存不属于提交内容。
 
 
 PROPKA 固定 λ=0.5 的探索性对照已完成：Cys3 更高的生产快照由 7/100 变为 6/100，未改善实验排序。包含端基类型适配及其局限，见 [完整报告](results/2mi1_propka_lambda05_20260924/REPORT.md)。
@@ -284,4 +295,4 @@ PROPKA 固定 λ=0.5 的探索性对照已完成：Cys3 更高的生产快照由
 
 ## 当前模型：SST 排序监督版
 
-正式权重已更新为 sst-ranking-20260924-v1。原 22 个分类标签不变，新增一条 Cys3 > Cys14 实验排序监督；100 个构象共同占一条观察的权重。SST 训练回代 99/100 帧排序符合，不能作为独立验证。此前还原态/PROPKA 报告保留为旧模型对照。见 [重训说明](docs/SST_TRAINING.md)。
+正式权重已更新为 sst-ranking-20260924-v1。原 22 个分类标签不变，新增一条 Cys3 > Cys14 实验排序监督；100 个构象共同占一条观察的权重。SST 训练回代 99/100 帧排序符合，不能作为独立验证。此前还原态/PROPKA 报告保留为旧模型对照。见 [重训说明](tmp/docs/SST_TRAINING.md)。
