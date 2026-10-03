@@ -6,8 +6,8 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = ('README.md', 'requirements.txt', 'requirements-md.txt', 'requirements-propka.txt', 'train.py', 'predict.py', 'screen.py',
-         'design.py', 'feedback.py', 'barrier.py', 'run.py', 'app.py', 'requirements-folding.txt')
+FILES = ('README.md', 'requirements.txt', 'train.py', 'predict.py', 'screen.py',
+         'design.py', 'feedback.py', 'barrier.py', 'run.py', 'app.py', 'start.cmd')
 DIRECTORIES = ('configs', 'data', 'src', 'models', 'notebooks', 'results',
                'logs/retrain_20260924', 'logs/verification_20260924',
                'logs/retrain_sst_20260924',

@@ -1,6 +1,6 @@
 """Build reduced 2MI1 and run a fixed short, multi-start explicit-water MD protocol.
 
-Install requirements.txt and requirements-md.txt. No scoring result controls sampling.
+Install requirements.txt. No scoring result controls sampling.
 """
 import argparse
 import io

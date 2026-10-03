@@ -1,11 +1,13 @@
 """Local sequence-input window: python app.py, then open http://127.0.0.1:8765."""
 import argparse
+import errno
 import json
 import mimetypes
 import subprocess
 import sys
 import threading
 import uuid
+import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
@@ -156,11 +158,22 @@ def main():
     parser.add_argument("--chunk-size", type=int, default=32)
     parser.add_argument("--max-length", type=int, default=100)
     parser.add_argument("--local-files-only", action="store_true")
+    parser.add_argument("--open-browser", action="store_true", help="Open the default browser after the server starts")
+    parser.add_argument("--auto-port", action="store_true", help="Use a free port if the requested port is occupied")
     options = parser.parse_args()
     if options.max_length < 2 or options.chunk_size < 1:
         parser.error("max-length must be >= 2 and chunk-size must be positive")
-    server = ThreadingHTTPServer(("127.0.0.1", options.port), handler_for(Jobs(options)))
-    print(f"CysRank input window: http://127.0.0.1:{server.server_port}", flush=True)
+    handler = handler_for(Jobs(options))
+    try:
+        server = ThreadingHTTPServer(("127.0.0.1", options.port), handler)
+    except OSError as exc:
+        if not options.auto_port or (exc.errno != errno.EADDRINUSE and getattr(exc, "winerror", None) not in (10048, 10013)):
+            raise
+        server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    url = f"http://127.0.0.1:{server.server_port}"
+    print(f"Cyclic Intelligence: {url}", flush=True)
+    if options.open_browser:
+        threading.Thread(target=webbrowser.open, args=(url,), daemon=True).start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:

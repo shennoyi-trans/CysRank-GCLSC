@@ -1,3 +1,0 @@
-# Install after requirements.txt. ESMFold runs locally; model weights downloaded once.
-transformers==4.57.6
-accelerate==1.12.0

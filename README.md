@@ -96,7 +96,7 @@ ESMFold 在本地完成结构预测，序列不上传到结构预测服务。首
 
 ### 工程验证与历史对照
 
-- **自动化验证：** [2026-09-25 自动流程记录](tmp/docs/AUTOMATIC_DESIGN.md)记载 40 项测试通过，并完成短肽 `AG` 的真实结构预测、评分与 ZIP 导出；其几何异常按规则显示警告。该记录反映当时的验证状态。
+- **自动化验证：** [2026-09-25 自动流程记录](docs/AUTOMATIC_DESIGN.md)记载 40 项测试通过，并完成短肽 `AG` 的真实结构预测、评分与 ZIP 导出；其几何异常按规则显示警告。该记录反映当时的验证状态。
 - **训练与重载复核：** 提供从头执行的 [完整流程 Notebook](notebooks/01_reproducible_workflow.ipynb)，用于训练、分组诊断及正式权重与重训权重的结果对照。[早期验证记录](logs/verification_20260924/verification.json)保存了旧版模型的 28 项测试、CPU 重载与 Notebook 执行结果。
 - **保留未改善排序的探索结果：** 旧版模型在还原封端 SST 的 100 个 MD 生产快照中仅 7 个给出 Cys3 更高；固定 λ=0.5 的 PROPKA 修正为 6/100，未改善排序。这些记录作为方法迭代依据保留，不能与当前模型的训练回代混为独立验证。
 
@@ -174,15 +174,19 @@ SASA 与邻近原子数参与模型输入，不设置额外硬阈值。插入设
 - **邻近原子数：** 统计目标 SG 周围 5 Å 内的非氢原子，仅排除该 SG 本身。
 - **结构质量检查：** 检查主链与目标 Cys 的关键键长，以及非相邻残基间小于 1.2 Å 的严重原子重叠。
 
-手工输入要求候选序列与 PDB 完全对应，使用分离单链、标准氨基酸、无配体或水分子且重原子完整的结构。原始序列的 PDB 不能替代插入后结构。详见 [插入设计说明](tmp/docs/DESIGN_WORKFLOW.md)。
+手工输入要求候选序列与 PDB 完全对应，使用分离单链、标准氨基酸、无配体或水分子且重原子完整的结构。原始序列的 PDB 不能替代插入后结构。详见 [插入设计说明](docs/DESIGN_WORKFLOW.md)。
 
 ## 快速开始与评审演示
 
-建议先查看上述 KTTKS 候选和结构报告，再运行已有位点评分；安装结构预测依赖后，可进一步体验网页设计流程。
+建议先查看上述 KTTKS 候选和结构报告，按下面的统一安装步骤配置环境，再运行已有位点评分或体验网页设计流程。
 
 ### 1. 配置环境
 
-仓库记录的已验证环境如下，完整依赖见 [requirements.txt](requirements.txt)。
+**Windows 64 位一键启动：** 完整解压项目到可写目录后，双击根目录的 `start.cmd`。脚本会选择兼容的 Python 3.13 环境、复用已有依赖并补齐 `requirements.txt`、准备 ESMFold 模型缓存，然后启动后端并自动打开默认浏览器。没有 Python 时会下载安装官方 Python；首次安装与下载模型需要联网。后续双击会复用环境和缓存。保留启动窗口，关闭窗口或按 Ctrl+C 停止服务。详细行为与排错见 [一键启动说明](docs/ONE_CLICK_START.md)。
+
+以下为手动安装方式：
+
+仓库记录的已验证环境如下。项目仅维护一份完整依赖清单 [requirements.txt](requirements.txt)，覆盖基础运行、Notebook、本地 ESMFold、OpenMM 模拟与 PROPKA 后处理；各功能共用下述安装步骤。模型权重和 OpenCL 驱动按相应功能另行准备，见 [文档索引](docs/README.md)。
 
 | 项目 | 配置 |
 | --- | --- |
@@ -217,10 +221,7 @@ python predict.py --input data/examples/input.jsonl --output results/review.csv 
 
 ### 3. 通过网页设计新序列
 
-**当前目录兼容性提示：** 专题文档已迁移至 `tmp/docs/`，但 `src/folding.py` 仍从 `docs/BARRIER_INTERFACE.md` 复制交接说明，自动流程会在评估包导出阶段失败。运行完整自动设计前需同步该路径；下述操作说明及已保存演示反映已实现的功能。
-
 ```powershell
-python -m pip install -r requirements-folding.txt
 python app.py
 ```
 
@@ -233,7 +234,7 @@ python app.py
 
 首次使用需下载 ESMFold 权重，缓存完整后可执行 `python app.py --local-files-only`。默认 `--device auto` 仅在可用 GPU 显存至少 12 GiB 时选择 CUDA，否则使用 CPU；CPU 仍需要足够内存，自动结构预测可能耗时较长。此资源要求与轻量位点评分不同。
 
-结果默认保存在 `results/web_jobs/<任务编号>/design/`，日志位于同一任务目录的 `progress.log`。服务重启后文件保留，但网页不能恢复旧任务；可直接读取磁盘结果。若预测未完成，应检查依赖、权重下载或内存相关日志后重新提交。完整参数见 [自动结构预测与多肽输入窗口](tmp/docs/AUTOMATIC_DESIGN.md)。
+结果默认保存在 `results/web_jobs/<任务编号>/design/`，日志位于同一任务目录的 `progress.log`。服务重启后文件保留，但网页不能恢复旧任务；可直接读取磁盘结果。若预测未完成，应检查依赖、权重下载或内存相关日志后重新提交。完整参数见 [自动结构预测与多肽输入窗口](docs/AUTOMATIC_DESIGN.md)。
 
 ### 4. 命令行设计与手工结构接入
 
@@ -296,13 +297,13 @@ python feedback.py --input data/feedback/incoming.jsonl --output data/feedback/r
 python train.py --feedback data/feedback/reviewed.jsonl --output logs/feedback_iteration
 ```
 
-反馈文件由使用者提供。校验与归档保留观察来源、审核状态和划分信息；只有已审核且属于训练集的湿实验记录进入分类训练，模拟、留出与未审核记录独立保留。字段要求见 [反馈接口说明](tmp/docs/FEEDBACK.md)。
+反馈文件由使用者提供。校验与归档保留观察来源、审核状态和划分信息；只有已审核且属于训练集的湿实验记录进入分类训练，模拟、留出与未审核记录独立保留。字段要求见 [反馈接口说明](docs/FEEDBACK.md)。
 
 ### 外部能垒反馈
 
 `barrier.py requests` 导出请求，外部计算人员补充结果后使用 `feedback.py` 校验，再由 `barrier.py train` 训练独立回归器、`barrier.py predict` 预测同一计算协议下的新位点。支持 GFN2-xTB 或 DFT 反馈，计算失败和未审核结果不参与训练。
 
-网页和设计入口不执行量化能垒计算。交接 PDB 还需由计算方定义试剂、反应步骤、端基/质子化、电荷、溶剂、参考态与过渡态核验；未计算能垒保持为空，不以结构优化能或反应能代替。详见 [能垒接口说明](tmp/docs/BARRIER_INTERFACE.md)。
+网页和设计入口不执行量化能垒计算。交接 PDB 还需由计算方定义试剂、反应步骤、端基/质子化、电荷、溶剂、参考态与过渡态核验；未计算能垒保持为空，不以结构优化能或反应能代替。详见 [能垒接口说明](docs/BARRIER_INTERFACE.md)。
 
 ## 数据与结果格式
 
@@ -334,31 +335,28 @@ python train.py --feedback data/feedback/reviewed.jsonl --output logs/feedback_i
 
 ```text
 CysRank-GCLSC/
-├── README.md                 # 项目介绍、评审演示与技术说明
-├── requirements.txt          # 基础运行与 Notebook 依赖
-├── requirements-folding.txt  # 本地 ESMFold 依赖
-├── requirements-md.txt       # 历史 MD 案例依赖
-├── requirements-propka.txt   # PROPKA 对照依赖
 ├── configs/                  # 分类与排序联合训练配置
 ├── data/                     # 数据、监督掩码、排序观察与来源记录
-├── src/                      # 特征、训练、推理、结构与设计逻辑
+├── docs/                     # 使用指南、接口约定与提交说明
+├── licenses/                 # 第三方许可证
+├── logs/                     # 训练、分组评估与验证记录
 ├── models/                   # 正式权重、预训练权重及 Model Card
-├── app.py                    # 本地网页服务
+├── notebooks/                # 可执行演示与案例分析
+├── results/                  # 候选结果、结构报告与历史对照
+├── src/                      # 特征、训练、推理、结构与设计逻辑
+├── tests/                    # 工程测试
+├── tools/                    # 案例复算与本地打包工具
 ├── web/                      # 序列输入与结果展示界面
+├── README.md                 # 项目介绍、评审演示与技术说明
+├── requirements.txt          # 唯一完整依赖清单
+├── app.py                    # 本地网页服务
 ├── train.py                  # 训练入口
 ├── predict.py                # 标准化位点评分入口
 ├── screen.py                 # 候选筛选入口
 ├── run.py                    # 训练到筛选的完整流程
 ├── design.py                 # 单 Cys 插入、结构预测与评分
 ├── barrier.py                # 能垒请求、独立训练与预测
-├── feedback.py               # 反馈校验与归档
-├── results/                  # 候选结果、结构报告与历史对照
-├── logs/                     # 训练、分组评估与验证记录
-├── notebooks/                # 可执行演示与案例分析
-├── tests/                    # 工程测试
-├── tools/                    # 案例复算与本地打包工具
-├── tmp/docs/                 # 本地专题资料，当前不纳入提交包
-└── licenses/                 # 第三方许可证
+└── feedback.py               # 反馈校验与归档
 ```
 
 ## 专题资料与交付说明
@@ -367,19 +365,19 @@ CysRank-GCLSC/
 
 还原态 SST 案例按提供方确认的 Ac/NH2 端基、还原巯基、pH 7.5 和 300 K 完成 10 起点短时显式水模拟。旧版模型平均分为 Cys3=0.8918、Cys14=0.9853，按起点平均均为 Cys14 更高，未稳定复现实验排序。相关脚本绑定旧版权重，以保留版本对照。
 
-可查看 [案例说明](tmp/docs/REDUCED_PEPTIDE_CASE.md)、[案例 Notebook](notebooks/02_reduced_peptide_case.ipynb)、[逐位点评分](results/2mi1_reduced_capped_ph75_20260924/analysis/results.csv)和 [PROPKA 对照报告](results/2mi1_propka_lambda05_20260924/REPORT.md)。仅复算随附结构可执行：
+可查看 [案例说明](docs/REDUCED_PEPTIDE_CASE.md)、[案例 Notebook](notebooks/02_reduced_peptide_case.ipynb)、[逐位点评分](results/2mi1_reduced_capped_ph75_20260924/analysis/results.csv)和 [PROPKA 对照报告](results/2mi1_propka_lambda05_20260924/REPORT.md)。仅复算随附结构可执行：
 
 ```bash
 python tools/analyze_2mi1_reduced_md.py --output results/2mi1_reanalysis
 ```
 
-重做模拟需另装 `requirements-md.txt`，OpenCL 设置见案例说明。该流程不插入残基、不计算反应能垒，也不改变正式模型。[KTTKS 文献案例](tmp/docs/KTTKS_CASE_STUDY.md)和 `results/kttks_design_requests/` 保存前期候选准备材料；已完成的自动预测结果位于 `results/kttks_esmfold_20260925/`。
+完整依赖已包含 OpenMM；重做模拟所需的 OpenCL 驱动及设备设置见案例说明。该流程不插入残基、不计算反应能垒，也不改变正式模型。[KTTKS 文献案例](docs/KTTKS_CASE_STUDY.md)和 `results/kttks_design_requests/` 保存前期候选准备材料；已完成的自动预测结果位于 `results/kttks_esmfold_20260925/`。
 
-### 本地打包与目录兼容性
+### 文档组织与本地打包
 
-专题文档现位于 `tmp/docs/`，历史版本、重复运行产物与过程文件归档至 `tmp/`。[历史整理说明](tmp/docs/PROJECT_LAYOUT.md)中的根目录 `docs/` 描述反映迁移前布局。
+正式专题文档集中于 `docs/`，入口见 [文档索引](docs/README.md)和[项目结构](docs/PROJECT_LAYOUT.md)。赛事原件、参考资料、历史版本、重复运行产物与过程文件保留于 `tmp/`。
 
-打包工具按明确的文件与目录范围生成 ZIP 和逐文件 SHA-256 清单，排除 `tmp/`、`.git/`、本机环境、缓存及重复 Notebook 运行目录，只生成本地包、不上传。**当前 `tools/package_submission.py` 仍要求根目录存在 `docs/`，需同步目录配置后再运行；同时应确认评审所需专题文档已纳入交付范围。**
+打包工具按明确的文件与目录范围生成 ZIP 和逐文件 SHA-256 清单，排除 `tmp/`、`.git/`、本机环境、缓存及重复 Notebook 运行目录，只生成本地包、不上传。正式 `docs/` 文档与唯一的 `requirements.txt` 均纳入提交包。
 
 ```bash
 python tools/package_submission.py --output tmp/agents/submission/CysRank-GCLSC.zip
@@ -389,6 +387,6 @@ python tools/package_submission.py --output tmp/agents/submission/CysRank-GCLSC.
 
 ### 数据来源与第三方声明
 
-CysRank 基于 ProteinMPNN 的预训练结构编码能力，实现 Cys 位点任务适配、生化特征融合、候选设计筛选与反馈管理；自动结构预测使用 ESMFold。ProteinMPNN 的 MIT 许可保留于 [licenses/ProteinMPNN-MIT.txt](licenses/ProteinMPNN-MIT.txt)，本地版本与哈希见 [第三方说明](tmp/docs/THIRD_PARTY.md)，结构预测相关依赖说明见 [自动流程文档](tmp/docs/AUTOMATIC_DESIGN.md)。
+CysRank 基于 ProteinMPNN 的预训练结构编码能力，实现 Cys 位点任务适配、生化特征融合、候选设计筛选与反馈管理；自动结构预测使用 ESMFold。ProteinMPNN 的 MIT 许可保留于 [licenses/ProteinMPNN-MIT.txt](licenses/ProteinMPNN-MIT.txt)，本地版本与哈希见 [第三方说明](docs/THIRD_PARTY.md)，结构预测相关依赖说明见 [自动流程文档](docs/AUTOMATIC_DESIGN.md)。
 
-部分原始实验记录、数据授权、获取时间及结构特征复算材料尚需提供方补充。正式提交范围与候选字段应核对实际赛道要求，详见 [数据说明](data/README.md)和[提交要求核对表](tmp/docs/SUBMISSION_CHECKLIST.md)。
+部分原始实验记录、数据授权、获取时间及结构特征复算材料尚需提供方补充。正式提交范围与候选字段应核对实际赛道要求，详见 [数据说明](data/README.md)和[提交要求核对表](docs/SUBMISSION_CHECKLIST.md)。

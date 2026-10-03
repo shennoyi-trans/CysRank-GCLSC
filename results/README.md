@@ -6,14 +6,14 @@ candidate_id、track、sequence、prediction_score、model_version、run_version
 
 .sites.jsonl 保留全部打分、硬过滤和拒绝原因；.run.json 记录输入及模型哈希、环境版本、阈值、排序和候选数量。不提供未经验证的置信区间。
 
-kttks_design_requests/ 保留 KTTKS 的六条单 Cys 插入候选和结构交接模板，目前无结构、模型评分或 Top3。案例依据见 ../docs/KTTKS_CASE_STUDY.md。
+kttks_design_requests/ 保留 KTTKS 的六条单 Cys 插入候选和结构交接模板。后续本地 ESMFold 结构、评分及 Top3 保存在 kttks_esmfold_20260925/，见 [设计报告](kttks_esmfold_20260925/results/report.md)；尚无能垒或湿实验验证。案例依据见 [文献与候选准备说明](../docs/KTTKS_CASE_STUDY.md)。
 
 
 ## 还原态测试肽案例
 
 2mi1_reduced_capped_ph75_20260924/ 保存本轮成功的结构生成与评分结果。analysis/results.csv 是 100 个生产快照、每帧两个已有位点的 200 行清单，包含实际结构文件路径；analysis/comparison.csv 还包含最小化和平衡结构。它不是 200 个新设计候选，也不是独立测试。
 
-实验期望 Cys3 > Cys14，当前仅 7/100 帧符合，10 个起点的平均排序均相反。全部快照保留，不挑选有利构象。参数与适用范围见 [正式案例说明](../docs/REDUCED_PEPTIDE_CASE.md)，系统与能量等原始模拟日志在 logs/reduced_md_20260924。失败、中断及仅改标记的早期尝试已归档至 tmp/archive/reduced_case_process_20260924。
+实验期望 Cys3 > Cys14，旧版 part2-20260924-v1 模型仅 7/100 帧符合，10 个起点的平均排序均相反。全部快照保留，不挑选有利构象。参数与适用范围见 [正式案例说明](../docs/REDUCED_PEPTIDE_CASE.md)，系统与能量等原始模拟日志在 logs/reduced_md_20260924。失败、中断及仅改标记的早期尝试已归档至 tmp/archive/reduced_case_process_20260924。
 
 
 ## 当前模型：SST 排序监督版

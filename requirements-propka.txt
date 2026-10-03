@@ -1,2 +1,0 @@
-# Optional fixed-weight pKa post-processing; install requirements.txt separately.
-propka==3.5.1

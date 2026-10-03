@@ -1,5 +1,7 @@
 tmp/
 .venv/
+.runtime/
+logs/launcher/
 .obsidian/
 __pycache__/
 *.py[cod]

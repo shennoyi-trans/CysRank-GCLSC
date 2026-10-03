@@ -35,5 +35,5 @@
 
 结构快照位于 `results/2mi1_reduced_capped_ph75_20260924/start_*/`，同目录 protocol.json、runs.json、snapshots.jsonl 记录实际参数与结构哈希。交付案例的系统 XML、溶剂化初始结构、最终状态、检查点和能量日志位于 `logs/reduced_md_20260924/start_*/`；新模拟的日志目录由 --log-output 指定，默认 logs/<输出目录名>。
 `results.csv` 为 200 行结构关联的标准化逐位点清单；`comparison.csv` 为全部结构比较，`scores.jsonl` 为 240 个位点分数（含最小化与平衡），不是 240 个独立实验。其余 JSONL 保留特征与核验依据。
-复现：先安装 requirements.txt；仅重新评分无需 OpenMM。`python tools/analyze_2mi1_reduced_md.py --output results/2mi1_reanalysis` 可复算所有随附结构。重做模拟另安装 requirements-md.txt，再运行 `python tools/rebuild_2mi1_reduced.py --output results/new_reduced_run --ph 7.5 --temperature 300`，之后用 --input 指向新目录分析。
+复现：先安装统一的 requirements.txt；仅重新评分不调用 OpenMM。`python tools/analyze_2mi1_reduced_md.py --output results/2mi1_reanalysis` 可复算所有随附结构。重做模拟使用同一依赖清单中的 OpenMM，并需配置 OpenCL 驱动，再运行 `python tools/rebuild_2mi1_reduced.py --output results/new_reduced_run --ph 7.5 --temperature 300`，之后用 --input 指向新目录分析。
 早期失败及被新条件取代的尝试已归档到 tmp/archive/reduced_case_process_20260924，不纳入本报告。原实际执行脚本和调用证据保留在 logs/reduced_md_20260924，当前工具仅调整运行依赖及文件输出组织。

@@ -1,0 +1,42 @@
+{
+  "data/raw/训练正例.jsonl": {
+    "sha256": "b20d93bd0bfa8b64f7461e85c444e7c31908fba4e1ebceed7d6b7fe1d6c4bed1",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "data/raw/训练集负例.jsonl": {
+    "sha256": "8e29460b02b5049c43808405fdcd81115ca906afecf2c6643ec4f3501c051bb0",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "data/external/validation.jsonl": {
+    "sha256": "ee8c32cd17d4d8a2969b3f8590952fa85e5e35a5c477ba522a3c90127ff7d1ca",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "data/provenance/positive_before_exclusion.jsonl": {
+    "sha256": "47349ce661d2185012c2d30c6a3940830e22b03194a093cb1681162acb0cb5ca",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "data/provenance/parent_sequences.jsonl": {
+    "sha256": "eab30596a518367cee4f59f0937e95a5040a44b3ac67d03b62411c005dca4380",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "data/structures/test.pdb": {
+    "sha256": "2b22e410e41cf8292fb6e8a1e91cea9d4d9a9d184113c74a3fda6084a3d0a811",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "models/site_predictor.pt": {
+    "sha256": "58f1c0ec37d005d971078b6d6d148f6b7fe693f7d5c4951db9d67c699629b1d4",
+    "provenance_record": "logs/retrain_sst_20260924/config.json"
+  },
+  "models/pretrained/v_48_020.pt": {
+    "sha256": "f28f40170e21858c5ff31ef50b6e63414ff76dc331b19f85aa8586a12031744a",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "src/protein_mpnn_utils.py": {
+    "sha256": "74c8f9b7553422a7a0bbd705874844ee103c8926c2c96f154a87e0b824071e1b",
+    "provenance_record": "data/provenance/revision_20260924.json; data/README.md; logs/retrain_20260924/config.json"
+  },
+  "data/ranking/sst_ordering.json": {
+    "sha256": "d6358e5dad35401a20bdcdc32820dc455d5362aa271b15888a9d6bdeceb0b4f8",
+    "provenance_record": "data/provenance/sst_training_20260924.json"
+  }
+}

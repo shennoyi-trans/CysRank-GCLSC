@@ -36,7 +36,7 @@ inputs 中只保存 ACE 记录转换后的几何输入；单独对这些 PDB 运
 ## 复现
 
 ```powershell
-python -m pip install -r requirements-propka.txt
+python -m pip install -r requirements.txt
 python tools/score_propka_case.py --output results/propka_replay
 ```
 
