@@ -3,7 +3,62 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CysRank · 多肽设计</title>
 <style>
-:root{color-scheme:light;--ink:#17352e;--muted:#65776f;--line:#d9e3dc;--green:#176649}*{box-sizing:border-box}body{margin:0;background:#f4f6f0;color:var(--ink);font:16px/1.65 system-ui,"Microsoft YaHei",sans-serif}header{border-bottom:1px solid var(--line);padding:20px max(6vw,24px);display:flex;justify-content:space-between;align-items:center}header b{font-size:23px;letter-spacing:-1px}header span{font-size:13px;color:var(--muted)}main{max-width:1080px;margin:54px auto;padding:0 24px}.eyebrow{font-size:12px;letter-spacing:3px;color:var(--green)}h1{font-size:clamp(30px,5vw,46px);line-height:1.3;margin:12px 0}p{color:var(--muted)}.flow{display:flex;gap:18px;flex-wrap:wrap;margin:28px 0 34px;font-size:13px;color:var(--muted)}.flow strong{color:var(--green)}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:22px}label{font-weight:650;display:block;margin-bottom:10px}textarea{display:block;width:100%;min-height:130px;resize:vertical;border:1px solid #b9cbc0;border-radius:10px;padding:17px;font:19px/1.7 ui-monospace,Consolas,monospace;letter-spacing:2px;color:var(--ink);background:#fafcf8}textarea:focus{outline:2px solid #67a483;outline-offset:2px}.row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:16px}.small{font-size:13px;color:var(--muted)}button,.download{border:0;border-radius:9px;padding:12px 22px;background:var(--green);color:white;font:600 14px system-ui;text-decoration:none;cursor:pointer;display:inline-block}button:disabled{opacity:.55;cursor:wait}.error{color:#a6382d}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:13px;background:#fff;padding:22px;min-width:0}.card h3{margin:0;font-size:15px}.sequence{overflow-wrap:anywhere;font:19px/1.8 ui-monospace,monospace;letter-spacing:1px;margin:22px 0}mark{background:#daf0b7;color:#234723;border-radius:3px;padding:2px}.score{font-size:30px;font-weight:650;margin:10px 0}.badge{font-size:12px;color:var(--green);background:#edf5ed;border-radius:20px;padding:4px 10px}.warn{background:#fff5df;border:1px solid #ecd3a1;padding:12px;border-radius:9px;color:#81500f;font-size:13px}.links{display:flex;gap:16px;margin-top:18px}.links a{color:var(--green);font-size:13px}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:230px;overflow:auto;font-size:12px;color:var(--muted)}[hidden]{display:none!important}h2{font-size:22px}footer{margin:35px 0;color:var(--muted);font-size:12px}@media(max-width:760px){main{margin-top:30px}.cards{grid-template-columns:1fr}.panel{padding:20px}header span{display:none}}
+:root{
+  color-scheme:light;
+  --ink:#3c4148;
+  --muted:#606b79;
+  --line:#c5cdd5;
+  --primary:#1e467e;
+  --primary-hover:#163761;
+  --blue:#4275b5;
+  --background:#f1f6fa;
+  --surface:#fff;
+  --soft-blue:#e8f0f8;
+  --input-background:#f8fbfd;
+  --input-line:#aebfd1;
+  --accent:#c00000;
+  --accent-background:#fff0f0;
+  --accent-line:#e7bcbc;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--background);color:var(--ink);font:16px/1.65 system-ui,"Microsoft YaHei",sans-serif}
+header{background:var(--surface);border-bottom:1px solid var(--line);padding:20px max(6vw,24px);display:flex;justify-content:space-between;align-items:center}
+header b{font-size:23px;letter-spacing:-1px;color:var(--primary)}
+header span{font-size:13px;color:var(--muted)}
+main{max-width:1080px;margin:54px auto;padding:0 24px}
+.eyebrow{font-size:12px;letter-spacing:3px;color:var(--primary)}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.3;margin:12px 0;color:var(--primary)}
+p{color:var(--muted)}
+.flow{display:flex;gap:18px;flex-wrap:wrap;margin:28px 0 34px;font-size:13px;color:var(--muted)}
+.flow strong{color:var(--primary)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:22px}
+label{font-weight:650;display:block;margin-bottom:10px}
+textarea{display:block;width:100%;min-height:130px;resize:vertical;border:1px solid var(--input-line);border-radius:10px;padding:17px;font:19px/1.7 ui-monospace,Consolas,monospace;letter-spacing:2px;color:var(--ink);background:var(--input-background)}
+textarea::placeholder{color:var(--muted);opacity:1}
+textarea:focus{outline:2px solid var(--blue);outline-offset:2px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:16px}
+.small{font-size:13px;color:var(--muted)}
+button,.download{border:0;border-radius:9px;padding:12px 22px;background:var(--primary);color:var(--surface);font:600 14px system-ui;text-decoration:none;cursor:pointer;display:inline-block}
+button:enabled:hover,.download:hover{background:var(--primary-hover)}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+button:disabled{opacity:.55;cursor:wait}
+.error{color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{border:1px solid var(--line);border-radius:13px;background:var(--surface);padding:22px;min-width:0}
+.card h3{margin:0;font-size:15px;color:var(--primary)}
+.sequence{overflow-wrap:anywhere;font:19px/1.8 ui-monospace,monospace;letter-spacing:1px;margin:22px 0}
+mark{background:var(--accent-background);color:var(--accent);border-radius:3px;padding:2px}
+.score{font-size:30px;font-weight:650;margin:10px 0;color:var(--primary)}
+.badge{font-size:12px;color:var(--primary);background:var(--soft-blue);border-radius:20px;padding:4px 10px}
+.warn{background:var(--accent-background);border:1px solid var(--accent-line);padding:12px;border-radius:9px;color:var(--accent);font-size:13px}
+.links{display:flex;gap:16px;margin-top:18px}
+.links a{color:var(--primary);font-size:13px}
+.links a:hover{color:var(--primary-hover)}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:230px;overflow:auto;font-size:12px;color:var(--muted)}
+[hidden]{display:none!important}
+h2{font-size:22px;color:var(--primary)}
+footer{margin:35px 0;color:var(--muted);font-size:12px}
+@media(max-width:760px){main{margin-top:30px}.cards{grid-template-columns:1fr}.panel{padding:20px}header span{display:none}}
 </style>
 <header><b>环化智造 Cyclic Intelligence</b></header>
 <main><h1>输入一条多肽，探索新的 Cys 位点。</h1>
